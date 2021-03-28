@@ -72,4 +72,8 @@ export const theme: DefaultTheme = {
     desktop: '1680px',
     wideDesktop: '1920px',
   },
+  fonts: {
+    montserrat: "'Montserrat', sans-serif",
+    roboto: "'Roboto', sans-serif",
+  },
 };
