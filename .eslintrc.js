@@ -19,6 +19,14 @@ module.exports = {
       },
     },
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
+  ],
   rules: {
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
