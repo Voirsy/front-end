@@ -63,4 +63,13 @@ export const theme: DefaultTheme = {
       salonDescTitle: '#29292F',
     },
   },
+  breakpoints: {
+    mobilePortrait: '320px',
+    mobileLandscape: '568px',
+    tabletPortrait: '768px',
+    tabletLandscape: '1024px',
+    laptop: '1366px',
+    desktop: '1680px',
+    wideDesktop: '1920px',
+  },
 };

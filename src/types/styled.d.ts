@@ -1,4 +1,5 @@
 import 'styled-components';
+import { Breakpoints } from './breakpoints.interface';
 import { Categories, GrayColors, BlueOutline, Dark, Black, Purple } from './colors.interface';
 
 declare module 'styled-components' {
@@ -15,5 +16,6 @@ declare module 'styled-components' {
       categories: Categories;
       grayColors: GrayColors;
     };
+    breakpoints: Breakpoints;
   }
 }
