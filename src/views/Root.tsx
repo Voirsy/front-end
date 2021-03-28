@@ -1,4 +1,4 @@
-import App from '../App';
+import App from './App';
 import MainTemplate from '../components/templates/MainTemplate';
 
 const Root = () => {
