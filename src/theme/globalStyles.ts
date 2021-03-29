@@ -1,6 +1,10 @@
 import * as styled from 'styled-components';
 
 export const GlobalStyles = styled.createGlobalStyle`
+  :root {
+    font-size: 62.5%;
+  }
+
   html,
   body,
   p,
