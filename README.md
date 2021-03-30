@@ -1,6 +1,6 @@
 # Voirsy
 
-Install needed dependiencies by using:
+Install needed dependencies by using:
 
 ```
 npm ci
