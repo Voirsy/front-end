@@ -1,10 +1,10 @@
 import { Props } from './types';
-import { Styled } from './styles';
+import Styled from './styles';
 
-export const Button = ({ label, isPrimary = false, isDanger = false }: Props) => {
-  return (
-    <Styled.Button isPrimary={isPrimary} isDanger={isDanger} type="button">
-      {label}
-    </Styled.Button>
-  );
-};
+const Button = ({ label, isPrimary = false, isDanger = false }: Props) => (
+  <Styled.Button isPrimary={isPrimary} isDanger={isDanger} type="button">
+    {label}
+  </Styled.Button>
+);
+
+export default Button;

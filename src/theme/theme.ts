@@ -1,7 +1,7 @@
 import { DefaultTheme } from 'styled-components';
 import hexToRgba from 'hex-rgba';
 
-export const theme: DefaultTheme = {
+const theme: DefaultTheme = {
   colors: {
     black: {
       normal: '#000000',
@@ -77,3 +77,5 @@ export const theme: DefaultTheme = {
     roboto: "'Roboto', sans-serif",
   },
 };
+
+export default theme;

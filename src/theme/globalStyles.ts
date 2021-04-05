@@ -1,6 +1,6 @@
 import * as styled from 'styled-components';
 
-export const GlobalStyles = styled.createGlobalStyle`
+const GlobalStyles = styled.createGlobalStyle`
   :root {
     font-size: 62.5%;
   }
@@ -37,3 +37,4 @@ export const GlobalStyles = styled.createGlobalStyle`
     font-family: ${({ theme }) => theme.fonts.roboto};
   }
 `;
+export default GlobalStyles;
