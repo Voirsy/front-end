@@ -28,36 +28,36 @@ const Button = styled.button<ButtonProps>`
       return css`
         height: 2.2rem;
         width: 7rem;
-        font-size: 1.1rem;
+        font-size: 1rem;
 
         @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
           height: 2.8rem;
           width: 9rem;
-          font-size: 1.2rem;
+          font-size: 1.1rem;
         }
       `;
     if (size === 'small')
       return css`
         height: 2.8rem;
         width: 9rem;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
 
         @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
           height: 3.5rem;
           width: 12rem;
-          font-size: 1.4rem;
+          font-size: 1.3rem;
         }
       `;
     if (size === 'medium')
       return css`
         height: 3.5rem;
         width: 20rem;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
 
         @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
           height: 4rem;
           width: 25rem;
-          font-size: 1.5rem;
+          font-size: 1.3rem;
         }
       `;
     return css`
@@ -68,7 +68,7 @@ const Button = styled.button<ButtonProps>`
       @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
         height: 4.5rem;
         width: 20rem;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
       }
     `;
   }}
