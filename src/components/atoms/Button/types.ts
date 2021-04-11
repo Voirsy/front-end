@@ -10,6 +10,5 @@ export type Props = {
   isBold?: boolean;
   buttonWidth?: number;
   isLoading?: boolean;
-  // eslint-disable-next-line no-unused-vars
-  onClick: (...args: any[]) => any;
+  onClick: () => void;
 };
