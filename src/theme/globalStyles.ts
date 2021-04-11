@@ -5,6 +5,12 @@ const GlobalStyles = styled.createGlobalStyle`
     font-size: 62.5%;
   }
 
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   html,
   body,
   p,
