@@ -10,6 +10,7 @@ type ButtonProps = {
   readonly isBold: boolean;
   readonly buttonWidth: number;
   readonly isLoading: boolean;
+  readonly isSocial: boolean;
 };
 
 const Button = styled.button<ButtonProps>`
@@ -126,6 +127,30 @@ const Button = styled.button<ButtonProps>`
       &:focus {
         background-color: ${theme.colors.grayColors.dark035};
         border-color: ${theme.colors.grayColors.dark035};
+      }
+    `};
+
+  ${({ theme, isSocial }) =>
+    isSocial &&
+    css`
+      background-color: ${theme.colors.social};
+      border-color: ${theme.colors.social};
+      position: relative;
+
+      & > svg {
+        background: ${theme.colors.white};
+        height: 2.6rem;
+        width: 2.6rem;
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        border-radius: 50%;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: ${theme.colors.social};
+        border-color: ${theme.colors.social};
       }
     `};
 

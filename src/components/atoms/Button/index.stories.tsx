@@ -93,3 +93,9 @@ IsLoading.args = {
   size: 'medium',
   isLoading: true,
 };
+
+export const IsSocial = Template.bind({});
+IsSocial.args = {
+  label: 'Continue with Google',
+  isSocial: true,
+};

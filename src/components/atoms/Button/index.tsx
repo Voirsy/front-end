@@ -1,4 +1,5 @@
 import BeatLoader from 'react-spinners/BeatLoader';
+import { FcGoogle } from 'react-icons/fc';
 import { Props } from './types';
 import Styled from './styles';
 import theme from '../../../theme/theme';
@@ -14,13 +15,14 @@ const Button = ({
   isPrimaryColor = false,
   isBold = false,
   buttonWidth = 0,
+  isSocial = false,
   isLoading = false,
   onClick = () => {},
 }: Props) => (
   <Styled.Button
     type={type}
-    size={size}
-    borderRadius={borderRadius}
+    size={isSocial ? 'medium' : size}
+    borderRadius={isSocial ? 30 : borderRadius}
     isPrimary={isPrimary}
     isWarning={isWarning}
     border={border}
@@ -29,15 +31,16 @@ const Button = ({
     buttonWidth={buttonWidth}
     isLoading={isLoading}
     onClick={onClick}
+    isSocial={isSocial}
   >
-    {isLoading ? (
+    {isLoading && (
       <BeatLoader
         color={theme.colors.grayColors.dark}
         size={size === 'small' || size === 'verysmall' ? 12 : 16}
       />
-    ) : (
-      label
     )}
+    {isSocial && <FcGoogle />}
+    {!isLoading && label}
   </Styled.Button>
 );
 
