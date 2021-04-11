@@ -11,11 +11,16 @@ const theme: DefaultTheme = {
     },
     white: '#FFFFFF',
     background: '#FBFBFB',
-    red: '#CC3333',
+    red: {
+      normal: '#CC3333',
+      _010: hexToRgba('#CC3333', 10),
+      _080: hexToRgba('#CC3333', 80),
+    },
     social: '#4285F4',
     purple: {
       normal: '#7F4CD2',
       _005: hexToRgba('#7F4CD2', 5),
+      _020: hexToRgba('#7F4CD2', 20),
       _050: hexToRgba('#7F4CD2', 50),
       _090: hexToRgba('#7F4CD2', 90),
     },
@@ -52,6 +57,7 @@ const theme: DefaultTheme = {
     },
     grayColors: {
       dark: '#9C9DA3',
+      dark020: hexToRgba('#9C9DA3', 20),
       dark035: hexToRgba('#9C9DA3', 35),
       dark050: hexToRgba('#9C9DA3', 50),
       dark063: hexToRgba('#9C9DA3', 63),

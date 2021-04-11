@@ -19,8 +19,9 @@ export interface Categories {
 
 export interface GrayColors {
   dark: string;
-  dark050: string;
+  dark020: string;
   dark035: string;
+  dark050: string;
   dark063: string;
   dark087: string;
   light: string;
@@ -39,6 +40,12 @@ export interface BlueOutline {
   _087: string;
 }
 
+export interface Red {
+  normal: string;
+  _010: string;
+  _080: string;
+}
+
 export interface Dark {
   normal: string;
   _063: string;
@@ -55,6 +62,7 @@ export interface Black {
 export interface Purple {
   normal: string;
   _005: string;
+  _020: string;
   _050: string;
   _090: string;
 }
