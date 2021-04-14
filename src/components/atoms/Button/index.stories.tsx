@@ -9,6 +9,9 @@ export default {
     label: {
       description: 'Main label of the button',
     },
+    isPrimary: {
+      description: "Font-size of button text given in rem's",
+    },
     size: {
       control: 'select',
     },
@@ -23,6 +26,15 @@ export default {
         step: 0.05,
       },
       description: "Value in rem's",
+    },
+    isWarning: {
+      description: "When it's `true` the primary color of the button is red",
+    },
+    isBold: {
+      description: "When it's `true` `font-weight` is 700 otherwise 500",
+    },
+    border: {
+      description: "When it's `true` `border` is 1px otherwise 0px",
     },
     isPrimaryColor: {
       description:
