@@ -28,6 +28,9 @@ export default {
       description:
         'Whenever the color of the text, border and icon should be purple. It should be pass only when button is not primary',
     },
+    fontSize: {
+      description: "Font-size of button text given in rem's",
+    },
   },
 } as Meta;
 
@@ -97,6 +100,14 @@ IsLoading.args = {
   label: '+ Add',
   size: 'medium',
   isLoading: true,
+};
+
+export const SignIn = Template.bind({});
+SignIn.args = {
+  label: 'Sign in',
+  ariaLabel: 'Sign in to Voirsy',
+  borderRadius: 50,
+  fontSize: 2,
 };
 
 export const IsSocial = Template.bind({});

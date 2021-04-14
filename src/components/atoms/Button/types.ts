@@ -12,5 +12,6 @@ export type Props = {
   buttonWidth?: number;
   isLoading?: boolean;
   isSocial?: boolean;
+  fontSize?: number;
   onClick: () => void;
 };
