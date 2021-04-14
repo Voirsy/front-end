@@ -18,6 +18,7 @@ const Button = ({
   isSocial = false,
   isLoading = false,
   ariaLabel,
+  fontSize,
   onClick = () => {},
 }: Props) => (
   <Styled.Button
@@ -33,6 +34,7 @@ const Button = ({
     isLoading={isLoading}
     onClick={onClick}
     isSocial={isSocial}
+    fontSize={fontSize}
     aria-label={ariaLabel}
   >
     {isLoading && (

@@ -1,16 +1,17 @@
 import styled, { css } from 'styled-components';
 
 type ButtonProps = {
-  readonly isPrimary: boolean;
-  readonly isWarning: boolean;
-  readonly size: 'verysmall' | 'small' | 'medium' | 'large';
-  readonly borderRadius: number;
-  readonly border: boolean;
-  readonly isPrimaryColor: boolean;
-  readonly isBold: boolean;
-  readonly buttonWidth: number;
-  readonly isLoading: boolean;
-  readonly isSocial: boolean;
+  readonly isPrimary?: boolean;
+  readonly isWarning?: boolean;
+  readonly size?: 'verysmall' | 'small' | 'medium' | 'large';
+  readonly borderRadius?: number;
+  readonly border?: boolean;
+  readonly isPrimaryColor?: boolean;
+  readonly isBold?: boolean;
+  readonly buttonWidth?: number;
+  readonly isLoading?: boolean;
+  readonly isSocial?: boolean;
+  readonly fontSize?: number;
 };
 
 const Button = styled.button<ButtonProps>`
@@ -154,7 +155,13 @@ const Button = styled.button<ButtonProps>`
       }
     `};
 
-  width: ${({ buttonWidth }) => buttonWidth !== 0 && `${buttonWidth}px`};
+  width: ${({ buttonWidth }) => buttonWidth !== 0 && `${buttonWidth}px !important`};
+
+  font-size: ${({ fontSize }) => fontSize && `${fontSize * 0.75}rem`};
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
+    font-size: ${({ fontSize }) => fontSize && `${fontSize}rem`};
+  }
 `;
 
 const Styled = {
