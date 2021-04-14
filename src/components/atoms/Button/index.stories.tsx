@@ -26,7 +26,7 @@ export default {
     },
     isPrimaryColor: {
       description:
-        'Whether the color of the text, border and icon should be purple. It should be pass only when button is not primary',
+        'Whenever the color of the text, border and icon should be purple. It should be pass only when button is not primary',
     },
   },
 } as Meta;
@@ -41,6 +41,7 @@ Default.args = {
 export const Secondary = Template.bind({});
 Secondary.args = {
   label: 'Cancel',
+  ariaLabel: 'Cancel removing crew member',
   isPrimary: false,
   size: 'large',
 };
@@ -48,6 +49,7 @@ Secondary.args = {
 export const Warning = Template.bind({});
 Warning.args = {
   label: 'Delete',
+  ariaLabel: 'Remove crew member',
   isWarning: true,
   size: 'large',
 };
@@ -63,6 +65,7 @@ SmallWarning.args = {
 export const WithoutBorder = Template.bind({});
 WithoutBorder.args = {
   label: 'Back',
+  ariaLabel: 'Back to step 2',
   isPrimary: false,
   border: false,
 };
@@ -70,6 +73,7 @@ WithoutBorder.args = {
 export const WithPrimaryColor = Template.bind({});
 WithPrimaryColor.args = {
   label: 'Save',
+  ariaLabel: 'Save changes',
   size: 'verysmall',
   isPrimary: false,
   border: false,
@@ -81,6 +85,7 @@ WithPrimaryColor.args = {
 export const WithPrimaryColorAndBorder = Template.bind({});
 WithPrimaryColorAndBorder.args = {
   label: '+ Add',
+  ariaLabel: 'Add new service',
   size: 'medium',
   isPrimary: false,
   isBold: true,

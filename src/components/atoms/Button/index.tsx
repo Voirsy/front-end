@@ -1,4 +1,4 @@
-import BeatLoader from 'react-spinners/BeatLoader';
+import { BeatLoader } from 'react-spinners';
 import { FcGoogle } from 'react-icons/fc';
 import { Props } from './types';
 import Styled from './styles';
@@ -17,6 +17,7 @@ const Button = ({
   buttonWidth = 0,
   isSocial = false,
   isLoading = false,
+  ariaLabel,
   onClick = () => {},
 }: Props) => (
   <Styled.Button
@@ -32,6 +33,7 @@ const Button = ({
     isLoading={isLoading}
     onClick={onClick}
     isSocial={isSocial}
+    aria-label={ariaLabel}
   >
     {isLoading && (
       <BeatLoader
