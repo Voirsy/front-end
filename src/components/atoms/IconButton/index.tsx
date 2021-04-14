@@ -12,6 +12,7 @@ const IconButton = ({
   iconWidth = 2,
   primaryColor,
   icon,
+  ariaLabel,
 }: Props) => (
   <Styled.Button
     isPrimary={isPrimary}
@@ -21,6 +22,7 @@ const IconButton = ({
     iconWidth={iconWidth}
     primaryColor={primaryColor}
     iconColor={icon.props.color}
+    aria-label={ariaLabel}
   >
     {React.cloneElement(icon, {
       size: icon.props.size ? icon.props.size : iconDefaultSize,

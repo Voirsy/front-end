@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { FiX, FiNavigation, FiArrowRight, FiCheck, FiHeart, FiCamera } from 'react-icons/fi';
+import { FiX, FiArrowRight, FiCheck, FiHeart, FiCamera } from 'react-icons/fi';
 import { BiCurrentLocation } from 'react-icons/bi';
 import IconButton from './index';
 import { Props as IconButtonProps } from './types';
@@ -24,13 +24,17 @@ export default {
 
 const Template: Story<IconButtonProps> = (args) => <IconButton {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  icon: <FiNavigation size="65%" />,
+export const Primary = Template.bind({});
+Primary.args = {
+  ariaLabel: 'Find my current location',
+  buttonSize: 3.8,
+  iconWidth: 0,
+  icon: <BiCurrentLocation style={{ fill: theme.colors.white }} />,
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
+  ariaLabel: 'Close sign up form',
   isPrimary: false,
   buttonSize: 8,
   icon: <FiX size="50%" />,
@@ -38,20 +42,15 @@ Secondary.args = {
 
 export const PrimarySmall = Template.bind({});
 PrimarySmall.args = {
+  ariaLabel: 'Go further',
   buttonSize: 2.5,
   iconWidth: 2.5,
   icon: <FiArrowRight />,
 };
 
-export const PrimaryMedium = Template.bind({});
-PrimaryMedium.args = {
-  buttonSize: 3.8,
-  iconWidth: 0,
-  icon: <BiCurrentLocation style={{ fill: theme.colors.white }} />,
-};
-
 export const WithoutBorder = Template.bind({});
 WithoutBorder.args = {
+  ariaLabel: 'Confirm changes',
   isPrimary: false,
   isBorder: false,
   buttonSize: 3.2,
@@ -61,6 +60,7 @@ WithoutBorder.args = {
 
 export const Heart = Template.bind({});
 Heart.args = {
+  ariaLabel: 'Add to favorites',
   isPrimary: false,
   isBorder: false,
   buttonSize: 2.4,
@@ -70,6 +70,7 @@ Heart.args = {
 
 export const LargeCamera = Template.bind({});
 LargeCamera.args = {
+  ariaLabel: 'Add photo',
   isBorder: false,
   buttonSize: 10,
   primaryColor: theme.colors.blueOutline.normal,
@@ -78,6 +79,7 @@ LargeCamera.args = {
 
 export const SmallCamera = Template.bind({});
 SmallCamera.args = {
+  ariaLabel: 'Update your profile photo',
   isBorder: false,
   buttonSize: 4,
   primaryColor: theme.colors.grayColors.dark,
