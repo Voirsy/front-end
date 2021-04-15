@@ -1,5 +1,12 @@
 import styled, { css } from 'styled-components';
 import { StyledIconButtonProps } from './types';
+
+const Button = styled.button.attrs<StyledIconButtonProps>(
+  ({ theme, primaryColor, isAvatar, isBorder, isPrimary }) => ({
+    primaryColor: primaryColor || theme.colors.purple.normal,
+    isBorder: isAvatar ? false : isBorder,
+    isPrimary: isAvatar ? true : isPrimary,
+  })
 )<StyledIconButtonProps>`
   border-style: solid;
   border-width: ${({ isBorder }) => (isBorder ? '2px' : '0px')};
@@ -35,6 +42,14 @@ import { StyledIconButtonProps } from './types';
       }
     `;
   }}
+
+  ${({ isAvatar, avatarUrl }) =>
+    isAvatar &&
+    avatarUrl &&
+    css`
+      background: url(${avatarUrl}) center;
+      background-size: cover;
+    `}
 `;
 
 const Styled = { Button };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Props } from './types';
+import { FiUser } from 'react-icons/fi';
 import { IconButtonProps } from './types';
 import Styled from './styles';
 
@@ -12,24 +12,28 @@ const IconButton = ({
   type = 'button',
   iconWidth = 2,
   primaryColor,
-  icon,
+  icon = <FiUser size="65%" />,
   ariaLabel,
-}: Props) => (
+  isAvatar = false,
+  avatarUrl,
 }: IconButtonProps) => (
   <Styled.Button
     isPrimary={isPrimary}
-    type={type}
     buttonSize={buttonSize}
     isBorder={isBorder}
     iconWidth={iconWidth}
     primaryColor={primaryColor}
     iconColor={icon.props.color}
+    isAvatar={isAvatar}
+    avatarUrl={avatarUrl}
     aria-label={ariaLabel}
+    type={type}
   >
-    {React.cloneElement(icon, {
-      size: icon.props.size ? icon.props.size : iconDefaultSize,
-      ...icon.props,
-    })}
+    {((isAvatar && !avatarUrl) || !isAvatar) &&
+      React.cloneElement(icon, {
+        size: icon.props.size ? icon.props.size : iconDefaultSize,
+        ...icon.props,
+      })}
   </Styled.Button>
 );
 export default IconButton;
