@@ -10,8 +10,12 @@ const Button = styled.button.attrs<StyledIconButtonProps>(
 )<StyledIconButtonProps>`
   border-style: solid;
   border-width: ${({ isBorder }) => (isBorder ? '2px' : '0px')};
-  width: ${({ buttonSize }) => `${buttonSize}rem`};
-  height: ${({ buttonSize }) => `${buttonSize}rem`};
+  width: ${({ buttonSize }) => `${buttonSize * 0.75}rem`};
+  height: ${({ buttonSize }) => `${buttonSize * 0.75}rem`};
+  @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
+    width: ${({ buttonSize }) => `${buttonSize}rem`};
+    height: ${({ buttonSize }) => `${buttonSize}rem`};
+  }
   border-radius: 50%;
   cursor: pointer;
   display: grid;
