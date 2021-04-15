@@ -1,17 +1,6 @@
 import styled, { css } from 'styled-components';
-
-type ButtonProps = {
-  readonly buttonSize?: number;
-  readonly iconWidth?: number;
-  readonly isBorder?: boolean;
-  readonly isPrimary?: boolean;
-  readonly primaryColor?: string;
-  readonly iconColor?: string;
-};
-
-const Button = styled.button.attrs<ButtonProps>(({ theme, primaryColor }) => ({
-  primaryColor: primaryColor || theme.colors.purple.normal,
-}))<ButtonProps>`
+import { StyledIconButtonProps } from './types';
+)<StyledIconButtonProps>`
   border-style: solid;
   border-width: ${({ isBorder }) => (isBorder ? '2px' : '0px')};
   width: ${({ buttonSize }) => `${buttonSize}rem`};

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Props } from './types';
+import { IconButtonProps } from './types';
 import Styled from './styles';
 
 const iconDefaultSize = '80%';
@@ -14,11 +15,12 @@ const IconButton = ({
   icon,
   ariaLabel,
 }: Props) => (
+}: IconButtonProps) => (
   <Styled.Button
     isPrimary={isPrimary}
+    type={type}
     buttonSize={buttonSize}
     isBorder={isBorder}
-    type={type}
     iconWidth={iconWidth}
     primaryColor={primaryColor}
     iconColor={icon.props.color}

@@ -2,7 +2,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { FiX, FiArrowRight, FiCheck, FiHeart, FiCamera } from 'react-icons/fi';
 import { BiCurrentLocation } from 'react-icons/bi';
 import IconButton from './index';
-import { Props as IconButtonProps } from './types';
+import { IconButtonProps } from './types';
 import theme from '../../../theme/theme';
 
 export default {
