@@ -8,44 +8,24 @@ const Button = styled.button.attrs<StyledIconButtonProps>(
     isPrimary: isAvatar ? true : isPrimary,
   })
 )<StyledIconButtonProps>`
-  border-style: solid;
-  border-width: ${({ isBorder }) => (isBorder ? '2px' : '0px')};
-  width: ${({ buttonSize }) => `${buttonSize * 0.75}rem`};
-  height: ${({ buttonSize }) => `${buttonSize * 0.75}rem`};
-  @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
-    width: ${({ buttonSize }) => `${buttonSize}rem`};
-    height: ${({ buttonSize }) => `${buttonSize}rem`};
-  }
   border-radius: 50%;
   cursor: pointer;
   display: grid;
   place-items: center;
+  border-style: solid;
+  border-width: ${({ isBorder }) => (isBorder ? '2px' : '0px')};
+  width: ${({ buttonSize }) => `${buttonSize * 0.75}rem`};
+  height: ${({ buttonSize }) => `${buttonSize * 0.75}rem`};
 
-  & svg {
-    stroke-width: ${({ iconWidth }) => `${iconWidth}px`};
-    vertical-align: middle;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
+    width: ${({ buttonSize }) => `${buttonSize}rem`};
+    height: ${({ buttonSize }) => `${buttonSize}rem`};
   }
 
-  ${({ theme, isPrimary, primaryColor, iconColor }) => {
-    if (!isPrimary) {
-      return css`
-        background: transparent;
-        border-color: ${theme.colors.grayColors.dark};
+  background-color: ${({ primaryColor, isPrimary }) => (isPrimary ? primaryColor : 'transparent')};
 
-        & svg {
-          stroke: ${iconColor || theme.colors.grayColors.dark};
-        }
-      `;
-    }
-    return css`
-      background-color: ${primaryColor};
-      border-color: ${primaryColor};
-
-      & svg {
-        stroke: ${iconColor || theme.colors.white};
-      }
-    `;
-  }}
+  border-color: ${({ primaryColor, isPrimary, theme }) =>
+    isPrimary ? primaryColor : theme.colors.grayColors.dark};
 
   ${({ isAvatar, avatarUrl }) =>
     isAvatar &&
@@ -53,7 +33,14 @@ const Button = styled.button.attrs<StyledIconButtonProps>(
     css`
       background: url(${avatarUrl}) center;
       background-size: cover;
-    `}
+    `};
+
+  & svg {
+    stroke-width: ${({ iconWidth }) => `${iconWidth}px`};
+    vertical-align: middle;
+    stroke: ${({ iconColor, isPrimary, theme }) =>
+      isPrimary ? iconColor || theme.colors.white : iconColor || theme.colors.grayColors.dark};
+  }
 `;
 
 const Styled = { Button };
