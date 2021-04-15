@@ -1,5 +1,20 @@
-export interface Props {
+export type StyledButtonProps = {
   isPrimary?: boolean;
-  isDanger?: boolean;
+  isWarning?: boolean;
+  size?: 'verysmall' | 'small' | 'medium' | 'large';
+  borderRadius?: number;
+  border?: boolean;
+  isPrimaryColor?: boolean;
+  isBold?: boolean;
+  buttonWidth?: number;
+  isLoading?: boolean;
+  isSocial?: boolean;
+  fontSize?: number;
+};
+
+export type ButtonProps = StyledButtonProps & {
   label: string;
-}
+  ariaLabel?: string;
+  type?: 'button' | 'submit' | 'reset';
+  onClick: () => void;
+};
