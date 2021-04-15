@@ -12,7 +12,7 @@ export type StyledButtonProps = {
   fontSize?: number;
 };
 
-export type Props = StyledButtonProps & {
+export type ButtonProps = StyledButtonProps & {
   label: string;
   ariaLabel?: string;
   type?: 'button' | 'submit' | 'reset';

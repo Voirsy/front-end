@@ -1,6 +1,6 @@
 import { BeatLoader } from 'react-spinners';
 import { FcGoogle } from 'react-icons/fc';
-import { Props } from './types';
+import { ButtonProps } from './types';
 import Styled from './styles';
 import theme from '../../../theme/theme';
 
@@ -20,7 +20,7 @@ const Button = ({
   ariaLabel,
   fontSize,
   onClick = () => {},
-}: Props) => (
+}: ButtonProps) => (
   <Styled.Button
     type={type}
     size={isSocial ? 'medium' : size}
