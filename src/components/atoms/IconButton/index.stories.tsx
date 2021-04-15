@@ -13,11 +13,29 @@ export default {
       control: 'select',
       defaultValue: 'button',
     },
-    size: {
-      description: "Size of button given in rem's",
-    },
     iconWidth: {
       description: "Stroke-width of icon given in px's",
+    },
+    buttonSize: {
+      description: "Size of button given in rem's",
+    },
+    isBorder: {
+      description: "When it's `true` border of button is 2px, by default is 0px",
+    },
+    isAvatar: {
+      description:
+        'When `isAvatar` is set to `true` IconButton comes in avatar mode and instead of icon it displays user avatar which have to be pass in avatarUrl. If avatarUrl has not been passed, default icon display.',
+    },
+    primaryColor: {
+      control: 'color',
+      description: 'Color of background when button is in primary mode. ',
+    },
+    avatarUrl: {
+      description: 'Link to user avatar stored on server.',
+    },
+    icon: {
+      description:
+        "Icon imported from `react-icons`. If it's possible import only Feather(fi) icons to keep consistent look of icons.",
     },
   },
 } as Meta;
