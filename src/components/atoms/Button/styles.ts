@@ -1,20 +1,7 @@
 import styled, { css } from 'styled-components';
+import { StyledButtonProps } from './types';
 
-type ButtonProps = {
-  readonly isPrimary?: boolean;
-  readonly isWarning?: boolean;
-  readonly size?: 'verysmall' | 'small' | 'medium' | 'large';
-  readonly borderRadius?: number;
-  readonly border?: boolean;
-  readonly isPrimaryColor?: boolean;
-  readonly isBold?: boolean;
-  readonly buttonWidth?: number;
-  readonly isLoading?: boolean;
-  readonly isSocial?: boolean;
-  readonly fontSize?: number;
-};
-
-const Button = styled.button<ButtonProps>`
+const Button = styled.button<StyledButtonProps>`
   overflow: hidden;
   cursor: pointer;
   border-radius: ${({ borderRadius }) => `${borderRadius}rem`};

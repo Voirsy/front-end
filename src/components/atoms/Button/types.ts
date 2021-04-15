@@ -1,11 +1,8 @@
-export type Props = {
-  label: string;
-  ariaLabel?: string;
-  borderRadius?: number;
-  type?: 'button' | 'submit' | 'reset';
-  size?: 'verysmall' | 'small' | 'medium' | 'large';
+export type StyledButtonProps = {
   isPrimary?: boolean;
   isWarning?: boolean;
+  size?: 'verysmall' | 'small' | 'medium' | 'large';
+  borderRadius?: number;
   border?: boolean;
   isPrimaryColor?: boolean;
   isBold?: boolean;
@@ -13,5 +10,11 @@ export type Props = {
   isLoading?: boolean;
   isSocial?: boolean;
   fontSize?: number;
+};
+
+export type Props = StyledButtonProps & {
+  label: string;
+  ariaLabel?: string;
+  type?: 'button' | 'submit' | 'reset';
   onClick: () => void;
 };
