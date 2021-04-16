@@ -19,8 +19,8 @@ export default {
     buttonSize: {
       description: "Size of button given in rem's",
     },
-    isBorder: {
-      description: "When it's `true` border of button is 2px, by default is 0px",
+    borderWidth: {
+      description: "Width of border given in px's",
     },
     isAvatar: {
       description:
@@ -70,7 +70,7 @@ export const WithoutBorder = Template.bind({});
 WithoutBorder.args = {
   ariaLabel: 'Confirm changes',
   isPrimary: false,
-  isBorder: false,
+  borderWidth: 0,
   buttonSize: 3.2,
   iconWidth: 3,
   icon: <FiCheck size="100%" />,
@@ -80,7 +80,7 @@ export const Heart = Template.bind({});
 Heart.args = {
   ariaLabel: 'Add to favorites',
   isPrimary: false,
-  isBorder: false,
+  borderWidth: 0,
   buttonSize: 2.4,
   iconWidth: 1,
   icon: <FiHeart size="100%" />,
@@ -89,7 +89,6 @@ Heart.args = {
 export const LargeCamera = Template.bind({});
 LargeCamera.args = {
   ariaLabel: 'Add photo',
-  isBorder: false,
   buttonSize: 10,
   primaryColor: theme.colors.blueOutline.normal,
   icon: <FiCamera size="40%" color={theme.colors.grayColors.dark} />,
@@ -98,7 +97,6 @@ LargeCamera.args = {
 export const SmallCamera = Template.bind({});
 SmallCamera.args = {
   ariaLabel: 'Update your profile photo',
-  isBorder: false,
   buttonSize: 4,
   primaryColor: theme.colors.grayColors.dark,
   iconWidth: 1,

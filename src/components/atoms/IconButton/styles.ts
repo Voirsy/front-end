@@ -2,9 +2,9 @@ import styled, { css } from 'styled-components';
 import { StyledIconButtonProps } from './types';
 
 const Button = styled.button.attrs<StyledIconButtonProps>(
-  ({ theme, primaryColor, isAvatar, isBorder, isPrimary }) => ({
+  ({ theme, primaryColor, isAvatar, borderWidth, isPrimary }) => ({
     primaryColor: primaryColor || theme.colors.purple.normal,
-    isBorder: isAvatar ? false : isBorder,
+    borderWidth: isAvatar ? 0 : borderWidth,
     isPrimary: isAvatar ? true : isPrimary,
   })
 )<StyledIconButtonProps>`
@@ -13,7 +13,7 @@ const Button = styled.button.attrs<StyledIconButtonProps>(
   display: grid;
   place-items: center;
   border-style: solid;
-  border-width: ${({ isBorder }) => (isBorder ? '2px' : '0px')};
+  border-width: ${({ borderWidth }) => `${borderWidth}px`};
   width: ${({ buttonSize }) => `${buttonSize * 0.75}rem`};
   height: ${({ buttonSize }) => `${buttonSize * 0.75}rem`};
 
@@ -31,13 +31,12 @@ const Button = styled.button.attrs<StyledIconButtonProps>(
     isAvatar &&
     avatarUrl &&
     css`
-      background: url(${avatarUrl}) center;
+      background: url(${avatarUrl}) center no-repeat;
       background-size: cover;
     `};
 
   & svg {
     stroke-width: ${({ iconWidth }) => `${iconWidth}px`};
-    vertical-align: middle;
     stroke: ${({ iconColor, isPrimary, theme }) =>
       isPrimary ? iconColor || theme.colors.white : iconColor || theme.colors.grayColors.dark};
   }

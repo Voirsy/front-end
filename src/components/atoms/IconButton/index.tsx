@@ -8,7 +8,7 @@ const iconDefaultSize = '80%';
 const IconButton = ({
   isPrimary = true,
   buttonSize = 5,
-  isBorder = true,
+  borderWidth = 2,
   type = 'button',
   iconWidth = 2,
   primaryColor,
@@ -20,7 +20,7 @@ const IconButton = ({
   <Styled.Button
     isPrimary={isPrimary}
     buttonSize={buttonSize}
-    isBorder={isBorder}
+    borderWidth={borderWidth}
     iconWidth={iconWidth}
     primaryColor={primaryColor}
     iconColor={icon.props.color}

@@ -1,7 +1,7 @@
 export type SharedProps = {
   buttonSize: number;
   iconWidth: number;
-  isBorder: boolean;
+  borderWidth: number;
   isPrimary: boolean;
   primaryColor?: string;
   isAvatar: boolean;
