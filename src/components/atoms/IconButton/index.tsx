@@ -17,6 +17,8 @@ const IconButton = ({
   isAvatar = false,
   isAdjustedToParent = false,
   avatarUrl,
+  onClick,
+  as,
 }: IconButtonProps) => (
   <Styled.Button
     isPrimary={isPrimary}
@@ -29,7 +31,9 @@ const IconButton = ({
     avatarUrl={avatarUrl}
     aria-label={ariaLabel}
     type={type}
+    onClick={onClick}
     isAdjustedToParent={isAdjustedToParent}
+    as={as}
   >
     {((isAvatar && !avatarUrl) || !isAvatar) &&
       React.cloneElement(icon, {
