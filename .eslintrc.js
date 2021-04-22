@@ -41,6 +41,7 @@ module.exports = {
     'no-underscore-dangle': 0,
     'arrow-body-style': [1, 'as-needed'],
     'no-use-before-define': 'off',
+    'no-nested-ternary': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'import/extensions': [
       'error',
