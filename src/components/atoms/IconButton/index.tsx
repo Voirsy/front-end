@@ -15,6 +15,7 @@ const IconButton = ({
   icon = <FiUser size="65%" />,
   ariaLabel,
   isAvatar = false,
+  isAdjustedToParent = false,
   avatarUrl,
 }: IconButtonProps) => (
   <Styled.Button
@@ -28,6 +29,7 @@ const IconButton = ({
     avatarUrl={avatarUrl}
     aria-label={ariaLabel}
     type={type}
+    isAdjustedToParent={isAdjustedToParent}
   >
     {((isAvatar && !avatarUrl) || !isAvatar) &&
       React.cloneElement(icon, {

@@ -14,13 +14,22 @@ const Button = styled.button.attrs<StyledIconButtonProps>(
   place-items: center;
   border-style: solid;
   border-width: ${({ borderWidth }) => `${borderWidth}px`};
-  width: ${({ buttonSize }) => `${buttonSize * 0.75}rem`};
-  height: ${({ buttonSize }) => `${buttonSize * 0.75}rem`};
+  ${({ isAdjustedToParent, buttonSize, theme }) => {
+    if (isAdjustedToParent)
+      return css`
+        width: 100%;
+        height: 100%;
+      `;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
-    width: ${({ buttonSize }) => `${buttonSize}rem`};
-    height: ${({ buttonSize }) => `${buttonSize}rem`};
-  }
+    return css`
+      width: ${buttonSize! * 0.75}rem;
+      height: ${buttonSize! * 0.75}rem;
+      @media (min-width: ${theme.breakpoints.tabletPortrait}) {
+        width: ${buttonSize}rem;
+        height: ${buttonSize}rem;
+      }
+    `;
+  }}
 
   background-color: ${({ primaryColor, isPrimary }) => (isPrimary ? primaryColor : 'transparent')};
 
