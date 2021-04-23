@@ -9,9 +9,13 @@ const Input = styled.input.attrs<StyledInputProps>(({ variant }) => ({
   height: ${({ inputHeight }) => `${inputHeight}rem`};
   outline: none;
 
-  ${({ variant, theme }) => css`
+  ${({ variant, theme, inputHeight }) => css`
     border: ${variant === 'search' ? '0' : '1px'} solid ${theme.colors.blueOutline.normal};
-    padding: ${variant === 'login' ? '0 0 0 1.2rem' : '0 0.7rem'};
+    padding: ${variant === 'login'
+      ? '0 0 0 1.2rem'
+      : variant === 'search'
+      ? `0 0.7rem 0 ${inputHeight}rem`
+      : '0 0.7rem'};
     font-size: ${variant === 'login' ? '1.3' : '1.6'}rem;
     background: ${variant === 'search' ? theme.colors.blueOutline._030 : theme.colors.white};
 
@@ -34,6 +38,22 @@ const InputWrapper = styled.div`
   width: fit-content;
 `;
 
+const IconWrapper = styled.div<StyledButtonWrapperProps>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: ${({ inputHeight }) => `${inputHeight}rem`};
+  width: ${({ inputHeight }) => `${inputHeight}rem`};
+  display: grid;
+  place-items: center;
+
+  & > svg {
+    width: 65%;
+    height: 65%;
+    stroke: ${({ theme }) => theme.colors.grayColors.dark};
+  }
+`;
+
 const ButtonWrapper = styled.div.attrs<StyledButtonWrapperProps>(({ inputHeight }) => ({
   height: inputHeight! * 0.6,
 }))<StyledButtonWrapperProps & { height?: number }>`
@@ -46,6 +66,6 @@ const ButtonWrapper = styled.div.attrs<StyledButtonWrapperProps>(({ inputHeight 
   `}
 `;
 
-const Styled = { Input, InputWrapper, ButtonWrapper };
+const Styled = { Input, InputWrapper, ButtonWrapper, IconWrapper };
 
 export default Styled;

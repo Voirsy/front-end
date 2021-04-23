@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FiArrowRight, FiEye, FiEyeOff } from 'react-icons/fi';
+import { FiArrowRight, FiEye, FiEyeOff, FiSearch } from 'react-icons/fi';
 import { InputProps } from './types';
 import Styled from './styles';
 import IconButton from '../IconButton';
@@ -23,6 +23,11 @@ const Input = ({
 
   return (
     <Styled.InputWrapper>
+      {variant === 'search' && (
+        <Styled.IconWrapper inputHeight={inputHeight}>
+          <FiSearch />
+        </Styled.IconWrapper>
+      )}
       <Styled.Input
         type={isPassword ? (isPasswordVisible ? 'text' : 'password') : type}
         variant={variant}

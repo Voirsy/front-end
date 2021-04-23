@@ -1,10 +1,10 @@
 export type StyledButtonWrapperProps = {
-  inputHeight?: number;
+  inputHeight: number;
 };
 
 export type StyledInputProps = StyledButtonWrapperProps & {
   variant?: 'default' | 'withDisable' | 'login' | 'placeholder' | 'animate' | 'search';
-  inputWidth?: number;
+  inputWidth: number;
 };
 
 export type InputProps = StyledInputProps & {
