@@ -60,8 +60,14 @@ export default {
   parameters: {
     formik: {
       initialValues: {
-        firstName: '',
+        address: 'Stalowa, 11, 52, 03-425, Warszawa, Praga-Północ',
+        salonName: 'Black Cat Beauty & Spa Praga Północ',
+        fullname: '',
+        password: '',
         email: '',
+        service_name: '',
+        search: '',
+        opinion: '',
       },
     },
   },
@@ -78,14 +84,14 @@ Default.args = {
 
 export const WithDisable = Template.bind({});
 WithDisable.args = {
-  name: 'name',
+  name: 'salonName',
   label: 'Name',
   variant: 'withDisable',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  name: 'name',
+  name: 'salonName',
   label: 'Name',
   disabled: true,
   variant: 'withDisable',
@@ -130,7 +136,7 @@ Placeholder.args = {
 
 export const Animate = Template.bind({});
 Animate.args = {
-  name: 'fullname_2',
+  name: 'fullname',
   label: 'Fullname',
   variant: 'animate',
   inputHeight: 4,
@@ -143,4 +149,14 @@ Search.args = {
   type: 'search',
   placeholder: 'Search',
   variant: 'search',
+};
+
+export const Textarea = Template.bind({});
+Textarea.args = {
+  name: 'opinion',
+  label: 'Opinion',
+  type: 'textarea',
+  inputHeight: 10,
+  inputWidth: 40,
+  variant: 'animate',
 };
