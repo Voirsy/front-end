@@ -19,7 +19,7 @@ const Label = styled.label<StyledLabelProps>`
     width: 1px;
   }
 
-  ${({ inputValue, theme, inputHeight, variant }) =>
+  ${({ inputValue, theme, inputHeight, variant, type }) =>
     variant === 'animate' &&
     css`
       cursor: auto;
@@ -30,7 +30,13 @@ const Label = styled.label<StyledLabelProps>`
       left: 1.2rem;
       background: ${theme.colors.white};
       transform: scale(${inputValue ? '0.8' : '1'})
-        translateY(${inputValue ? '-60%' : `calc(${inputHeight}rem / 2 - 50%)`});
+        translateY(
+          ${inputValue
+            ? '-60%'
+            : `calc(${type === 'textarea' ? 1.2 : inputHeight / 2}rem - ${
+                type === 'textarea' ? 0 : 50
+              }%)`}
+        );
       transform-origin: 0;
       transition: transform 0.2s ease;
     `}

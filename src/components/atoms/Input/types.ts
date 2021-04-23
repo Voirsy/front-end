@@ -9,7 +9,6 @@ export type StyledInputProps = StyledButtonWrapperProps & {
 
 export type InputProps = StyledInputProps & {
   id: string;
-  value?: string;
   type?: 'text' | 'password' | 'email' | 'search';
   disabled?: boolean;
   placeholder?: string;

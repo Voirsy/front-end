@@ -1,8 +1,16 @@
 import Styled from './styles';
 import { LabelProps } from './types';
 
-const Label = ({ variant = 'default', children, inputValue, htmlFor, inputHeight }: LabelProps) => (
+const Label = ({
+  variant = 'default',
+  children,
+  inputValue,
+  htmlFor,
+  inputHeight,
+  type,
+}: LabelProps) => (
   <Styled.Label
+    type={type}
     variant={variant}
     inputValue={inputValue}
     htmlFor={htmlFor}

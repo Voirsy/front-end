@@ -7,7 +7,7 @@ export type StyledTextFieldProps = {
 export type TextFieldProps = StyledTextFieldProps & {
   name: string;
   label: string;
-  type?: 'text' | 'password' | 'email' | 'search';
+  type?: 'text' | 'password' | 'email' | 'search' | 'textarea';
   disabled?: boolean;
   placeholder?: string;
   isPassword?: boolean;
