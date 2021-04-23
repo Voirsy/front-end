@@ -1,8 +1,20 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import withFormik from 'storybook-formik';
+import * as Yup from 'yup';
 import TextField from './index';
 import { TextFieldProps } from './types';
+
+const FormSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email').required('Field is required'),
+  address: Yup.string().required('Field is required'),
+  salonName: Yup.string().required('Field is required'),
+  fullname: Yup.string().required('Field is required'),
+  password: Yup.string().required('Field is required'),
+  service_name: Yup.string().required('Field is required'),
+  search: Yup.string().required('Field is required'),
+  opinion: Yup.string().required('Field is required'),
+});
 
 export default {
   title: 'Components/TextField',
@@ -69,6 +81,7 @@ export default {
         search: '',
         opinion: '',
       },
+      validationSchema: FormSchema,
     },
   },
 } as Meta;

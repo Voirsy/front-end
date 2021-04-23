@@ -15,6 +15,13 @@ const Wrapper = styled.div<{ variant: string }>`
     `}
 `;
 
-const Styled = { Wrapper };
+const ErrorMessage = styled.p`
+  text-align: right;
+  margin-top: 0.5rem;
+  color: ${({ theme }) => theme.colors.red.normal};
+  font-size: 1.2rem;
+`;
+
+const Styled = { Wrapper, ErrorMessage };
 
 export default Styled;
