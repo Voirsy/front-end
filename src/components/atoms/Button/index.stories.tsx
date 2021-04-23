@@ -10,7 +10,8 @@ export default {
       description: 'Main label of the button',
     },
     isPrimary: {
-      description: "Font-size of button text given in rem's",
+      description:
+        "Determines that button should be primary. When isn't primary `background` is `transparent`, color of font and border take the primary color",
     },
     size: {
       control: 'select',
