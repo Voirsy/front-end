@@ -10,7 +10,8 @@ const Input = styled.input.attrs<StyledInputProps>(({ variant }) => ({
   outline: none;
 
   ${({ variant, theme, inputHeight }) => css`
-    border: ${variant === 'search' ? '0' : '1px'} solid ${theme.colors.blueOutline.normal};
+    border: ${variant === 'search' ? '0' : '1px'} solid
+      ${variant === 'login' ? theme.colors.grayColors.light : theme.colors.blueOutline.normal};
     padding: ${variant === 'login'
       ? '0 0 0 1.2rem'
       : variant === 'search'
