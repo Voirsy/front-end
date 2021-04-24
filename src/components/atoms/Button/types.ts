@@ -1,7 +1,9 @@
-export type StyledButtonProps = {
+import { ButtonType, Size } from '../../../types/typeAliases';
+
+export interface StyledButtonProps {
   isPrimary?: boolean;
   isWarning?: boolean;
-  size?: 'verysmall' | 'small' | 'medium' | 'large';
+  size?: Size;
   borderRadius?: number;
   border?: boolean;
   isPrimaryColor?: boolean;
@@ -10,11 +12,11 @@ export type StyledButtonProps = {
   isLoading?: boolean;
   isSocial?: boolean;
   fontSize?: number;
-};
+}
 
-export type ButtonProps = StyledButtonProps & {
+export interface ButtonProps extends StyledButtonProps {
   label: string;
   ariaLabel?: string;
-  type?: 'button' | 'submit' | 'reset';
+  type?: ButtonType;
   onClick: () => void;
-};
+}

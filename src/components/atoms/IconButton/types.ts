@@ -1,4 +1,6 @@
-export type SharedProps = {
+import { ButtonType } from '../../../types/typeAliases';
+
+export interface SharedProps {
   buttonSize?: number;
   iconWidth?: number;
   borderWidth?: number;
@@ -7,16 +9,16 @@ export type SharedProps = {
   isAvatar?: boolean;
   avatarUrl?: string;
   isAdjustedToParent?: boolean;
-};
+}
 
-export type IconButtonProps = SharedProps & {
+export interface IconButtonProps extends SharedProps {
   ariaLabel: string;
   icon: JSX.Element;
-  type?: 'button' | 'submit' | 'reset';
+  type?: ButtonType;
   onClick?: () => void;
   as?: any;
-};
+}
 
-export type StyledIconButtonProps = SharedProps & {
+export interface StyledIconButtonProps extends SharedProps {
   iconColor?: string;
-};
+}

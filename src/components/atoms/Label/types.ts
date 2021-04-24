@@ -1,11 +1,13 @@
-export type StyledLabelProps = {
-  type: 'text' | 'password' | 'email' | 'search' | 'textarea';
-  variant: 'default' | 'withDisable' | 'login' | 'placeholder' | 'animate' | 'search';
+import { InputType, Variant } from '../../../types/typeAliases';
+
+export interface StyledLabelProps {
+  type: InputType;
+  variant: Variant;
   inputValue: string;
   inputHeight: number;
-};
+}
 
-export type LabelProps = StyledLabelProps & {
+export interface LabelProps extends StyledLabelProps {
   children: string;
   htmlFor: string;
-};
+}

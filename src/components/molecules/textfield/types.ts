@@ -1,15 +1,17 @@
-export type StyledTextFieldProps = {
-  variant?: 'default' | 'withDisable' | 'login' | 'placeholder' | 'animate' | 'search';
+import { InputType, Variant } from '../../../types/typeAliases';
+
+export interface StyledTextFieldProps {
+  variant?: Variant;
   inputHeight?: number;
   inputWidth?: number;
-};
+}
 
-export type TextFieldProps = StyledTextFieldProps & {
+export interface TextFieldProps extends StyledTextFieldProps {
   name: string;
   label: string;
-  type?: 'text' | 'password' | 'email' | 'search' | 'textarea';
+  type?: InputType;
   disabled?: boolean;
   placeholder?: string;
   isPassword?: boolean;
   isEmail?: boolean;
-};
+}

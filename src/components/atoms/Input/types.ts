@@ -1,17 +1,19 @@
-export type StyledButtonWrapperProps = {
+import { InputType, Variant } from '../../../types/typeAliases';
+
+export interface StyledButtonWrapperProps {
   inputHeight: number;
-};
+}
 
-export type StyledInputProps = StyledButtonWrapperProps & {
-  variant?: 'default' | 'withDisable' | 'login' | 'placeholder' | 'animate' | 'search';
+export interface StyledInputProps extends StyledButtonWrapperProps {
+  variant?: Variant;
   inputWidth: number;
-};
+}
 
-export type InputProps = StyledInputProps & {
+export interface InputProps extends StyledInputProps {
   id: string;
-  type?: 'text' | 'password' | 'email' | 'search';
+  type?: InputType;
   disabled?: boolean;
   placeholder?: string;
   isPassword?: boolean;
   isEmail?: boolean;
-};
+}
