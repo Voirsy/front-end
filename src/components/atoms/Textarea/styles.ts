@@ -9,6 +9,11 @@ const Textarea = styled.textarea<TextareaProps>`
   padding: 1rem;
   border-radius: 1rem;
   border: 1px solid ${({ theme }) => theme.colors.blueOutline.normal};
+
+  :hover:not(:disabled),
+  :focus {
+    background-color: ${({ theme }) => theme.colors.blueOutline._030};
+  }
 `;
 
 const Styled = {

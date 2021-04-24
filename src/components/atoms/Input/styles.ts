@@ -19,6 +19,7 @@ const Input = styled.input.attrs<StyledInputProps>(({ variant }) => ({
       : '0 0.7rem'};
     font-size: ${variant === 'login' ? '1.3' : '1.6'}rem;
     background: ${variant === 'search' ? theme.colors.blueOutline._030 : theme.colors.white};
+    transition: background-color 100ms ease-in-out, border-color 100ms ease-in-out;
 
     ::placeholder {
       color: ${variant === 'login'
@@ -30,6 +31,13 @@ const Input = styled.input.attrs<StyledInputProps>(({ variant }) => ({
       background-color: ${theme.colors.blueOutline._050};
       border: 0;
       color: ${theme.colors.grayColors.dark};
+    }
+
+    :hover:not(:disabled),
+    :focus {
+      background-color: ${variant !== 'search'
+        ? theme.colors.blueOutline._030
+        : theme.colors.blueOutline._050};
     }
   `}
 `;
