@@ -6,6 +6,7 @@ import IconButton from '../IconButton';
 import theme from '../../../theme/theme';
 
 const Input = ({
+  name,
   variant = 'default',
   type = 'text',
   inputHeight = 3.5,
@@ -36,28 +37,38 @@ const Input = ({
         disabled={disabled}
         {...rest}
       />
-      <Styled.ButtonWrapper inputHeight={inputHeight}>
-        {(isPassword || isEmail) && (
-          <IconButton
-            icon={
-              isEmail ? (
-                <FiArrowRight color={theme.colors.white} />
-              ) : isPasswordVisible ? (
-                <FiEye color={theme.colors.grayColors.light} />
-              ) : (
-                <FiEyeOff color={theme.colors.grayColors.light} />
-              )
-            }
-            ariaLabel={isEmail ? 'Go next' : 'Show password'}
-            isPrimary={isEmail}
-            borderWidth={isEmail ? 1 : 0}
-            buttonSize={inputHeight * 0.8}
-            iconWidth={isEmail ? 2 : 1}
-            onClick={isEmail ? () => {} : changePasswordVisibility}
-            isAdjustedToParent
-          />
-        )}
-      </Styled.ButtonWrapper>
+      {(isPassword || isEmail) && (
+        <Styled.ButtonWrapper inputHeight={inputHeight}>
+          {isPassword ? (
+            <IconButton
+              aria-controls={!isEmail && name}
+              aria-expanded={!isEmail && isPasswordVisible}
+              aria-label="Show password"
+              icon={
+                isPasswordVisible ? (
+                  <FiEye color={theme.colors.grayColors.light} />
+                ) : (
+                  <FiEyeOff color={theme.colors.grayColors.light} />
+                )
+              }
+              isPrimary={false}
+              borderWidth={0}
+              buttonSize={inputHeight * 0.8}
+              iconWidth={1}
+              onClick={changePasswordVisibility}
+              isAdjustedToParent
+            />
+          ) : (
+            <IconButton
+              aria-label="Go next"
+              icon={<FiArrowRight color={theme.colors.white} />}
+              buttonSize={inputHeight * 0.8}
+              onClick={() => {}}
+              isAdjustedToParent
+            />
+          )}
+        </Styled.ButtonWrapper>
+      )}
     </Styled.InputWrapper>
   );
 };

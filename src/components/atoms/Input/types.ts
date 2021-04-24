@@ -11,6 +11,7 @@ export interface StyledInputProps extends StyledButtonWrapperProps {
 
 export interface InputProps extends StyledInputProps {
   id: string;
+  name: string;
   type?: InputType;
   disabled?: boolean;
   placeholder?: string;

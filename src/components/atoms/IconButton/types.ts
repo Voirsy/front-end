@@ -12,11 +12,9 @@ export interface SharedProps {
 }
 
 export interface IconButtonProps extends SharedProps {
-  ariaLabel: string;
   icon: JSX.Element;
   type?: ButtonType;
   onClick?: () => void;
-  as?: any;
 }
 
 export interface StyledIconButtonProps extends SharedProps {
