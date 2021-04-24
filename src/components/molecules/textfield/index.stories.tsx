@@ -3,6 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import withFormik from 'storybook-formik';
 import * as Yup from 'yup';
 import TextField from './index';
+import argTypes from './storieArgTypes';
 import { TextFieldProps } from './types';
 
 const FormSchema = Yup.object().shape({
@@ -19,55 +20,7 @@ const FormSchema = Yup.object().shape({
 export default {
   title: 'Components/TextField',
   component: TextField,
-  argTypes: {
-    name: {
-      description: 'Name of input. Name is also used for `id` and `htmlFor`',
-      table: {
-        type: { summary: 'string' },
-        category: 'text',
-      },
-    },
-    label: {
-      table: {
-        type: { summary: 'string' },
-        category: 'text',
-      },
-    },
-    placeholder: {
-      control: { type: 'text' },
-      table: {
-        type: { summary: 'string' },
-        category: 'text',
-      },
-    },
-    inputWidth: {
-      description: "Width of input given in rem's",
-      control: { type: 'number' },
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: 30 },
-        category: 'size',
-      },
-    },
-    inputHeight: {
-      description: "Height of input given in rem's",
-      control: { type: 'number' },
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: 3.5 },
-        category: 'size',
-      },
-    },
-    disabled: {
-      description: 'Determines when input is disable or not',
-      control: { type: 'boolean' },
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false },
-        category: 'conditions',
-      },
-    },
-  },
+  argTypes,
   decorators: [withFormik],
   parameters: {
     formik: {
@@ -124,6 +77,7 @@ export const Password = Template.bind({});
 Password.args = {
   name: 'password',
   label: 'Password',
+  type: 'password',
   variant: 'login',
   isPassword: true,
   placeholder: 'Password',
