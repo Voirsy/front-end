@@ -17,7 +17,6 @@ const Button = ({
   buttonWidth = 0,
   isSocial = false,
   isLoading = false,
-  ariaLabel,
   fontSize,
   onClick = () => {},
 }: ButtonProps) => (
@@ -35,7 +34,7 @@ const Button = ({
     onClick={onClick}
     isSocial={isSocial}
     fontSize={fontSize}
-    aria-label={ariaLabel}
+    {...props}
   >
     {isLoading && (
       <BeatLoader

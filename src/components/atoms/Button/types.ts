@@ -16,7 +16,7 @@ export interface StyledButtonProps {
 
 export interface ButtonProps extends StyledButtonProps {
   label: string;
-  ariaLabel?: string;
   type?: ButtonType;
+  'aria-label'?: string;
   onClick: () => void;
 }

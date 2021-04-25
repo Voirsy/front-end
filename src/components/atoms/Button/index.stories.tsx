@@ -57,7 +57,7 @@ Default.args = {
 export const Secondary = Template.bind({});
 Secondary.args = {
   label: 'Cancel',
-  ariaLabel: 'Cancel removing crew member',
+  'aria-label': 'Cancel removing crew member',
   isPrimary: false,
   size: 'large',
 };
@@ -65,7 +65,7 @@ Secondary.args = {
 export const Warning = Template.bind({});
 Warning.args = {
   label: 'Delete',
-  ariaLabel: 'Remove crew member',
+  'aria-label': 'Remove crew member',
   isWarning: true,
   size: 'large',
 };
@@ -81,7 +81,7 @@ SmallWarning.args = {
 export const WithoutBorder = Template.bind({});
 WithoutBorder.args = {
   label: 'Back',
-  ariaLabel: 'Back to step 2',
+  'aria-label': 'Back to step 2',
   isPrimary: false,
   border: false,
 };
@@ -89,7 +89,7 @@ WithoutBorder.args = {
 export const WithPrimaryColor = Template.bind({});
 WithPrimaryColor.args = {
   label: 'Save',
-  ariaLabel: 'Save changes',
+  'aria-label': 'Save changes',
   size: 'verysmall',
   isPrimary: false,
   border: false,
@@ -101,7 +101,7 @@ WithPrimaryColor.args = {
 export const WithPrimaryColorAndBorder = Template.bind({});
 WithPrimaryColorAndBorder.args = {
   label: '+ Add',
-  ariaLabel: 'Add new service',
+  'aria-label': 'Add new service',
   size: 'medium',
   isPrimary: false,
   isBold: true,
@@ -118,7 +118,7 @@ IsLoading.args = {
 export const SignIn = Template.bind({});
 SignIn.args = {
   label: 'Sign in',
-  ariaLabel: 'Sign in to Voirsy',
+  'aria-label': 'Sign in to Voirsy',
   borderRadius: 50,
   fontSize: 2,
 };
