@@ -6,7 +6,7 @@ const Button = styled.button<StyledButtonProps>`
   cursor: pointer;
   border-radius: ${({ borderRadius }) => `${borderRadius}rem`};
   border-style: solid;
-  border-width: ${({ border }) => (border ? '1px' : '0px')};
+  border-width: ${({ borderWidth }) => `${borderWidth}px`};
   font-weight: ${({ isBold }) => (isBold ? '700' : '500')};
   outline: none;
   transition: background-color 150ms ease-in-out;

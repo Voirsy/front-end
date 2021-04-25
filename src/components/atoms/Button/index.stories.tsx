@@ -34,8 +34,8 @@ export default {
     isBold: {
       description: "When it's `true` `font-weight` is 700 otherwise 500",
     },
-    border: {
-      description: "When it's `true` `border` is 1px otherwise 0px",
+    borderWidth: {
+      description: "Value in px's",
     },
     isPrimaryColor: {
       description:
@@ -83,7 +83,7 @@ WithoutBorder.args = {
   label: 'Back',
   'aria-label': 'Back to step 2',
   isPrimary: false,
-  border: false,
+  borderWidth: 0,
 };
 
 export const WithPrimaryColor = Template.bind({});
@@ -92,7 +92,7 @@ WithPrimaryColor.args = {
   'aria-label': 'Save changes',
   size: 'verysmall',
   isPrimary: false,
-  border: false,
+  borderWidth: 0,
   isPrimaryColor: true,
   isBold: true,
   buttonWidth: 50,

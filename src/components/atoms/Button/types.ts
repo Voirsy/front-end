@@ -5,7 +5,7 @@ export interface StyledButtonProps {
   isWarning?: boolean;
   size?: Size;
   borderRadius?: number;
-  border?: boolean;
+  borderWidth?: number;
   isPrimaryColor?: boolean;
   isBold?: boolean;
   buttonWidth?: number;

@@ -11,14 +11,14 @@ const Button = ({
   borderRadius = 1,
   isPrimary = true,
   isWarning = false,
-  border = true,
+  borderWidth = 1,
   isPrimaryColor = false,
   isBold = false,
   buttonWidth = 0,
   isSocial = false,
   isLoading = false,
   fontSize,
-  onClick = () => {},
+  ...props
 }: ButtonProps) => (
   <Styled.Button
     type={type}
@@ -26,12 +26,11 @@ const Button = ({
     borderRadius={isSocial ? 30 : borderRadius}
     isPrimary={isPrimary}
     isWarning={isWarning}
-    border={border}
+    borderWidth={borderWidth}
     isPrimaryColor={isPrimaryColor}
     isBold={isBold}
     buttonWidth={buttonWidth}
     isLoading={isLoading}
-    onClick={onClick}
     isSocial={isSocial}
     fontSize={fontSize}
     {...props}
