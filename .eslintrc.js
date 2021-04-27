@@ -42,6 +42,10 @@ module.exports = {
     'arrow-body-style': [1, 'as-needed'],
     'no-use-before-define': 'off',
     'no-nested-ternary': 'off',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
     '@typescript-eslint/no-use-before-define': ['error'],
     'import/extensions': [
       'error',
