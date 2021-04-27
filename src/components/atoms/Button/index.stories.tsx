@@ -28,13 +28,7 @@ export default {
       description: "Font-size of button text given in rem's",
     },
   },
-  decorators: [
-    (S) => (
-      <div style={{ width: '22rem', height: '3.8rem' }}>
-        <S />
-      </div>
-    ),
-  ],
+  decorators: [(S) => <div style={{ width: '22rem', height: '3.8rem' }}>{S()}</div>],
 } as Meta;
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;

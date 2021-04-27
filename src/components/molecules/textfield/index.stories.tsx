@@ -1,6 +1,5 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import withFormik from 'storybook-formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import TextField from './index';
 import argTypes from './storieArgTypes';
@@ -17,26 +16,28 @@ const FormSchema = Yup.object().shape({
   opinion: Yup.string().required('Field is required'),
 });
 
+const initialValues = {
+  address: 'Stalowa, 11, 52, 03-425, Warszawa, Praga-Północ',
+  salonName: 'Black Cat Beauty & Spa Praga Północ',
+  fullname: '',
+  password: '',
+  email: '',
+  service_name: '',
+  search: '',
+  opinion: '',
+};
+
 export default {
   title: 'Components/TextField',
   component: TextField,
   argTypes,
-  decorators: [withFormik],
-  parameters: {
-    formik: {
-      initialValues: {
-        address: 'Stalowa, 11, 52, 03-425, Warszawa, Praga-Północ',
-        salonName: 'Black Cat Beauty & Spa Praga Północ',
-        fullname: '',
-        password: '',
-        email: '',
-        service_name: '',
-        search: '',
-        opinion: '',
-      },
-      validationSchema: FormSchema,
-    },
-  },
+  decorators: [
+    (S) => (
+      <Formik initialValues={initialValues} validationSchema={FormSchema} onSubmit={() => {}}>
+        {S()}
+      </Formik>
+    ),
+  ],
 } as Meta;
 
 const Template: Story<TextFieldProps> = (args) => <TextField {...args} />;
