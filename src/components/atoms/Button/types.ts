@@ -1,22 +1,25 @@
-import { ButtonType, Size } from '../../../types/typeAliases';
+import { ButtonType, Color } from '../../../types/global';
 
-export interface StyledButtonProps {
-  isPrimary?: boolean;
-  isWarning?: boolean;
-  size?: Size;
+export interface SharedProps {
   borderRadius?: number;
-  borderWidth?: number;
-  isPrimaryColor?: boolean;
-  isBold?: boolean;
-  buttonWidth?: number;
   isLoading?: boolean;
   isSocial?: boolean;
   fontSize?: number;
+  color: Color;
+  iconColor?: Color;
+  variant: 'default' | 'outlined' | 'contained';
 }
 
-export interface ButtonProps extends StyledButtonProps {
-  label: string;
+export interface StyledButtonProps extends SharedProps {
+  $width?: number;
+  $height?: number;
+}
+
+export interface ButtonProps extends SharedProps {
+  children: string;
   type?: ButtonType;
+  width?: number;
+  height?: number;
   'aria-label'?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
