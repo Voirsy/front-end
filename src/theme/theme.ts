@@ -82,6 +82,12 @@ const theme: DefaultTheme = {
     montserrat: "'Montserrat', sans-serif",
     roboto: "'Roboto', sans-serif",
   },
+  sizes: {
+    header: {
+      desktopHeight: 5.5,
+      mobileHeight: 4,
+    },
+  },
 };
 
 export default theme;
