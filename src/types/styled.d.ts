@@ -11,7 +11,9 @@ declare module 'styled-components' {
       background: string;
       purple: Purple;
       red: Red;
-      social: string;
+      social: {
+        normal: string;
+      };
       dark: Dark;
       blueOutline: BlueOutline;
       categories: Categories;

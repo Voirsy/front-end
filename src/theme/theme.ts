@@ -16,7 +16,9 @@ const theme: DefaultTheme = {
       _010: hexToRgba('#CC3333', 10),
       _080: hexToRgba('#CC3333', 80),
     },
-    social: '#4285F4',
+    social: {
+      normal: '#4285F4',
+    },
     purple: {
       normal: '#7F4CD2',
       _005: hexToRgba('#7F4CD2', 5),
@@ -57,6 +59,7 @@ const theme: DefaultTheme = {
     },
     grayColors: {
       dark: '#9C9DA3',
+      normal: '#9C9DA3',
       dark020: hexToRgba('#9C9DA3', 20),
       dark035: hexToRgba('#9C9DA3', 35),
       dark050: hexToRgba('#9C9DA3', 50),
