@@ -63,15 +63,17 @@ const IconWrapper = styled.div<StyledButtonWrapperProps>`
   }
 `;
 
-const ButtonWrapper = styled.div.attrs<StyledButtonWrapperProps>(({ inputHeight }) => ({
-  height: inputHeight! * 0.6,
-}))<StyledButtonWrapperProps & { height?: number }>`
+const ButtonWrapper = styled.div<StyledButtonWrapperProps>`
   position: absolute;
-  ${({ inputHeight, height }) => css`
-    height: ${height}rem;
-    width: ${height}rem;
-    top: ${(inputHeight! - height!) / 2}rem;
-    right: ${(inputHeight! - height!) / 2}rem;
+  background-color: transparent;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  top: 0;
+  right: 0;
+  ${({ inputHeight }) => css`
+    height: ${inputHeight}rem;
+    width: ${inputHeight}rem;
   `}
 `;
 

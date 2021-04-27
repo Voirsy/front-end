@@ -44,28 +44,27 @@ const Input = ({
               aria-controls={!isEmail && name}
               aria-expanded={!isEmail && isPasswordVisible}
               aria-label="Show password"
-              icon={
-                isPasswordVisible ? (
-                  <FiEye color={theme.colors.grayColors.light} />
-                ) : (
-                  <FiEyeOff color={theme.colors.grayColors.light} />
-                )
-              }
-              isPrimary={false}
-              borderWidth={0}
-              buttonSize={inputHeight * 0.8}
+              size={inputHeight * 0.75}
               iconWidth={1}
               onClick={changePasswordVisibility}
-              isAdjustedToParent
-            />
+              color="secondary"
+            >
+              {isPasswordVisible ? (
+                <FiEye size="60%" color={theme.colors.grayColors.light} />
+              ) : (
+                <FiEyeOff size="60%" color={theme.colors.grayColors.light} />
+              )}
+            </IconButton>
           ) : (
             <IconButton
               aria-label="Go next"
-              icon={<FiArrowRight color={theme.colors.white} />}
-              buttonSize={inputHeight * 0.8}
+              size={inputHeight * 0.6}
               onClick={() => {}}
-              isAdjustedToParent
-            />
+              variant="contained"
+              iconWidth={3}
+            >
+              <FiArrowRight size="80%" color={theme.colors.white} />
+            </IconButton>
           )}
         </Styled.ButtonWrapper>
       )}
