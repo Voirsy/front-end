@@ -1,4 +1,4 @@
-import { ButtonType } from '../../../types/typeAliases';
+import { ButtonType } from '../../../types/global';
 
 export interface SharedProps {
   buttonSize?: number;

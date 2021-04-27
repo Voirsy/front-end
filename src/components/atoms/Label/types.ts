@@ -1,4 +1,4 @@
-import { InputType, Variant } from '../../../types/typeAliases';
+import { InputType, Variant } from '../../../types/global';
 
 export interface StyledLabelProps {
   type: InputType;
