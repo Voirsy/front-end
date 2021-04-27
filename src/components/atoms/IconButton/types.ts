@@ -4,19 +4,20 @@ export interface SharedProps {
   iconWidth?: number;
   isAvatar?: boolean;
   avatarUrl?: string;
-  color: Color;
-  borderRadius: number;
-  variant: ButtonVariant;
+  borderRadius?: number;
+  variant?: ButtonVariant;
 }
 
 export interface IconButtonProps extends SharedProps {
   children: JSX.Element;
   type?: ButtonType;
-  size: number;
+  size?: number;
+  color?: Color;
   'aria-label': string;
   onClick?: () => void;
 }
 
 export interface StyledIconButtonProps extends SharedProps {
-  $size: number;
+  $size?: number;
+  color: Color;
 }
