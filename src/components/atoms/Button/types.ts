@@ -1,4 +1,4 @@
-import { ButtonType, Color } from '../../../types/global';
+import { ButtonType, ButtonVariant, Color } from '../../../types/global';
 
 export interface SharedProps {
   borderRadius?: number;
@@ -7,7 +7,7 @@ export interface SharedProps {
   fontSize?: number;
   color: Color;
   iconColor?: Color;
-  variant: 'default' | 'outlined' | 'contained';
+  variant: ButtonVariant;
 }
 
 export interface StyledButtonProps extends SharedProps {
