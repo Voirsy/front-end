@@ -29,6 +29,8 @@ const GlobalStyles = styled.createGlobalStyle`
   ol,
   ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   body {
@@ -41,6 +43,10 @@ const GlobalStyles = styled.createGlobalStyle`
   button,
   input {
     font-family: ${({ theme }) => theme.fonts.roboto};
+  }
+
+  a {
+    text-decoration: none;
   }
 `;
 export default GlobalStyles;
