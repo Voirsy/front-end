@@ -1,22 +1,22 @@
-import { ButtonType } from '../../../types/global';
+import { ButtonType, Color } from '../../../types/global';
 
 export interface SharedProps {
-  buttonSize?: number;
   iconWidth?: number;
-  borderWidth?: number;
-  isPrimary?: boolean;
-  primaryColor?: string;
   isAvatar?: boolean;
   avatarUrl?: string;
-  isAdjustedToParent?: boolean;
+  color: Color;
+  borderRadius: number;
+  variant: 'default' | 'outlined' | 'contained';
 }
 
 export interface IconButtonProps extends SharedProps {
-  icon: JSX.Element;
+  children: JSX.Element;
   type?: ButtonType;
+  size: number;
+  'aria-label': string;
   onClick?: () => void;
 }
 
 export interface StyledIconButtonProps extends SharedProps {
-  iconColor?: string;
+  $size: number;
 }
