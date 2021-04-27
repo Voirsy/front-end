@@ -11,6 +11,8 @@ const Button = styled.button.attrs<StyledIconButtonProps>(({ type }) => ({
   border-style: solid;
   transition: background-color 150ms ease-in-out;
   outline: none;
+  display: grid;
+  place-items: center;
 
   ${({ theme, $size, color, variant, iconWidth = 2, isAvatar, avatarUrl, borderRadius }) => css`
     background-color: ${
