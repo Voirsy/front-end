@@ -4,11 +4,9 @@ import { ProfileTemplateProps } from './types';
 
 const ProfileTemplate = ({ children }: ProfileTemplateProps) => (
   <Styled.Wrapper>
-    <Styled.Navigation>
-      <ul>
-        <ProfileNavigation />
-      </ul>
-    </Styled.Navigation>
+    <Styled.NavigationContainer>
+      <ProfileNavigation />
+    </Styled.NavigationContainer>
     {children}
   </Styled.Wrapper>
 );

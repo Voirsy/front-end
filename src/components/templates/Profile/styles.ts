@@ -10,12 +10,15 @@ const Wrapper = styled.div`
   }
 `;
 
-const Navigation = styled.nav`
-  height: 100%;
-  justify-self: center;
-  padding-top: 5rem;
+const NavigationContainer = styled.div`
+  display: none;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
-const Styled = { Wrapper, Navigation };
+const Styled = { Wrapper, NavigationContainer };
 
 export default Styled;
