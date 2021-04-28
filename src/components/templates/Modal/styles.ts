@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { StyledModalTemplateProps } from './types';
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -9,14 +10,17 @@ const ModalBackground = styled.div`
   z-index: 20;
   display: grid;
   place-items: center;
+  backdrop-filter: blur(3px);
+  background-color: ${({ theme }) => theme.colors.black._010};
 `;
 
-const ModalContent = styled.div<{ width?: string; height?: string }>`
+const ModalContent = styled.div<StyledModalTemplateProps>`
   background-color: ${({ theme }) => theme.colors.white};
 
-  ${({ height, width }) => css`
-    height: ${height || 'fit-content'};
-    width: ${width || 'fit-content'};
+  ${({ isAdjustedToParent }) => css`
+    height: ${isAdjustedToParent ? '100%' : 'fit-content'};
+    width: ${isAdjustedToParent ? '100%' : 'fit-content'};
+    border-radius: ${isAdjustedToParent ? '0' : '0.5rem'};
   `}
 `;
 
