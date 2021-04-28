@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const Navigation = styled.nav`
   height: 100%;
+  justify-self: center;
+  padding-top: 5rem;
 `;
 
 const ListItem = styled.li<{ isActive: boolean }>`
@@ -12,7 +14,6 @@ const ListItem = styled.li<{ isActive: boolean }>`
   grid-template-columns: 4rem 1fr;
   border-radius: 1rem;
   font-size: 2.2rem;
-  transition: background-color 150ms ease-in-out;
   color: ${({ theme, isActive }) => (isActive ? theme.colors.white : theme.colors.grayColors.dark)};
   background-color: ${({ theme, isActive }) =>
     isActive ? theme.colors.purple.normal : 'transparent'};
@@ -31,6 +32,6 @@ const IconWrapper = styled.div`
   height: 100%;
 `;
 
-const Styled = { Wrapper, ListItem, IconWrapper };
+const Styled = { ListItem, IconWrapper, Navigation };
 
 export default Styled;
