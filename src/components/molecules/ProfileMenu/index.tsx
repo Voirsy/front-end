@@ -5,7 +5,7 @@ import ModalTemplate from '../../templates/Modal';
 import ProfileNavigation from '../ProfileNavigation';
 
 const ProfileMenu = ({ modalToggle }: { modalToggle: (val: boolean) => void }) => (
-  <ModalTemplate isAdjustedToParent={false} modalToggle={modalToggle}>
+  <ModalTemplate isAdjustedToParent modalToggle={modalToggle}>
     <Header>
       <MainTitle>Voirsy</MainTitle>
       <button type="button" onClick={() => modalToggle(false)}>

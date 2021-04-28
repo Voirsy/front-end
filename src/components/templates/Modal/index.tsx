@@ -23,6 +23,7 @@ const ModalTemplate = ({
   children,
   isAdjustedToParent = false,
   modalToggle,
+  ...props
 }: ModalTemplateProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +41,7 @@ const ModalTemplate = ({
   }, []);
 
   return createPortal(
-    <Styled.ModalBackground>
+    <Styled.ModalBackground role="dialog" aria-modal {...props}>
       <Styled.ModalContent ref={modalRef} isAdjustedToParent={isAdjustedToParent}>
         {children}
       </Styled.ModalContent>
