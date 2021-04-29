@@ -7,16 +7,18 @@ const Input = styled.input.attrs<StyledInputProps>(({ variant }) => ({
   border-radius: ${({ borderRadius }) => `${borderRadius}rem`};
   width: ${({ inputWidth }) => `${inputWidth}rem`};
   height: ${({ inputHeight }) => `${inputHeight}rem`};
-  outline: none;
+  padding: 0 0.7rem 0 0;
 
   ${({ variant, theme, inputHeight }) => css`
     border: ${variant === 'search' ? '0' : '1px'} solid
       ${variant === 'login' ? theme.colors.grayColors.light : theme.colors.blueOutline.normal};
-    padding: ${variant === 'login'
-      ? '0 0 0 1.2rem'
-      : variant === 'search'
-      ? `0 0.7rem 0 ${inputHeight}rem`
-      : '0 0.7rem'};
+    padding-left: ${variant === 'login' ? '1.2rem' : '0.7rem'};
+
+    ${variant === 'search' &&
+    css`
+      padding-left: ${inputHeight}rem;
+    `}
+
     font-size: ${variant === 'login' ? '1.3' : '1.6'}rem;
     background: ${variant === 'search' ? theme.colors.blueOutline._030 : theme.colors.white};
     transition: background-color 100ms ease-in-out, border-color 100ms ease-in-out;
