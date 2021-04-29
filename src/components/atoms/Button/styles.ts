@@ -1,154 +1,66 @@
+import hexToRgba from 'hex-rgba';
 import styled, { css } from 'styled-components';
+import { Colors } from '../../../types/global';
 import { StyledButtonProps } from './types';
 
-const Button = styled.button<StyledButtonProps>`
+const Button = styled.button.attrs<StyledButtonProps>(({ $height, type }) => ({
+  updatedHeight: $height ? `${$height}rem` : '100%',
+  type: type || 'button',
+}))<StyledButtonProps & { updatedHeight?: string }>`
   overflow: hidden;
   cursor: pointer;
-  border-radius: ${({ borderRadius }) => `${borderRadius}rem`};
   border-style: solid;
-  border-width: ${({ border }) => (border ? '1px' : '0px')};
-  font-weight: ${({ isBold }) => (isBold ? '700' : '500')};
-  outline: none;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: background-color 150ms ease-in-out;
 
-  ${({ size }) => {
-    if (size === 'verysmall')
-      return css`
-        height: 2.2rem;
-        width: 7rem;
-        font-size: 1rem;
+  ${({ theme, color, variant, $width, updatedHeight, borderRadius, fontSize }) => css`
+    background-color: ${variant === 'contained'
+      ? theme.colors[Colors[color]].normal
+      : 'transparent'};
+    font-size: ${updatedHeight?.includes('%') ? '1.8rem' : `calc(${updatedHeight} * 0.4)`};
+    border-radius: ${borderRadius ? `${borderRadius}` : '1'}rem;
+    border-width: ${variant === 'default' ? 0 : 1}px;
+    border-color: ${theme.colors[Colors[color]].normal};
+    color: ${variant === 'contained' ? theme.colors.white : theme.colors[Colors[color]].normal};
+    width: ${$width ? `${$width}rem` : '100%'};
+    height: ${updatedHeight};
 
-        @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
-          height: 2.8rem;
-          width: 9rem;
-          font-size: 1.1rem;
-        }
-      `;
-    if (size === 'small')
-      return css`
-        height: 2.8rem;
-        width: 9rem;
-        font-size: 1.1rem;
-
-        @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
-          height: 3.5rem;
-          width: 12rem;
-          font-size: 1.3rem;
-        }
-      `;
-    if (size === 'medium')
-      return css`
-        height: 3.5rem;
-        width: 20rem;
-        font-size: 1.2rem;
-
-        @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
-          height: 4rem;
-          width: 25rem;
-          font-size: 1.3rem;
-        }
-      `;
-    return css`
-      height: 4rem;
-      width: 17rem;
-      font-size: 1.4rem;
-
-      @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
-        height: 4.5rem;
-        width: 20rem;
-        font-size: 1.5rem;
-      }
-    `;
-  }}
-  ${({ theme, isPrimary, isPrimaryColor }) => {
-    if (!isPrimary)
-      return css`
-        border-color: ${isPrimaryColor ? theme.colors.purple.normal : theme.colors.grayColors.dark};
-        background-color: transparent;
-        color: ${isPrimaryColor ? theme.colors.purple.normal : theme.colors.grayColors.dark};
-
-        &:hover,
-        &:focus {
-          background-color: ${isPrimaryColor
-            ? theme.colors.purple._020
-            : theme.colors.grayColors.dark020};
-        }
-      `;
-    return css`
-      border: ${theme.colors.purple.normal};
-      background-color: ${theme.colors.purple.normal};
-      color: ${theme.colors.white};
-
-      &:hover,
-      &:focus {
-        background-color: ${theme.colors.purple._090};
-      }
-    `;
-  }};
-
-  ${({ theme, isWarning, isPrimary }) =>
-    isWarning &&
+    ${fontSize &&
     css`
-      background-color: ${isPrimary ? theme.colors.red.normal : 'transparent'};
-      border-color: ${theme.colors.red.normal};
-      color: ${isPrimary ? theme.colors.white : theme.colors.red.normal};
+      font-size: ${fontSize}rem;
+    `}
 
-      &:hover,
-      &:focus {
-        background-color: ${isPrimary ? theme.colors.red._080 : theme.colors.red._010};
-      }
-    `};
+    :hover:not(:disabled),
+    :focus:not(:disabled) {
+      background-color: ${variant === 'contained'
+        ? hexToRgba(theme.colors[Colors[color]].normal, 90)
+        : hexToRgba(theme.colors[Colors[color]].normal, 20)};
+    }
+  `};
 
-  ${({ theme, isLoading }) =>
-    isLoading &&
-    css`
-      cursor: not-allowed;
-      background-color: ${theme.colors.grayColors.dark035};
-      border-color: ${theme.colors.grayColors.dark035};
+  :disabled {
+    cursor: no-drop;
+  }
 
-      & > span {
-        display: flex;
-        justify-content: center;
-      }
-
-      &:hover,
-      &:focus {
-        background-color: ${theme.colors.grayColors.dark035};
-        border-color: ${theme.colors.grayColors.dark035};
-      }
-    `};
-
-  ${({ theme, isSocial }) =>
+  ${({ theme, isSocial, updatedHeight }) =>
     isSocial &&
     css`
-      background-color: ${theme.colors.social};
-      border-color: ${theme.colors.social};
       position: relative;
 
-      & > svg {
+      > svg {
+        width: calc(${updatedHeight!} * 0.7);
+        height: calc(${updatedHeight!} * 0.7);
         background: ${theme.colors.white};
-        height: 2.6rem;
-        width: 2.6rem;
+        transform: translate(20%, -50%);
         position: absolute;
-        top: 7px;
-        left: 7px;
+        top: 50%;
+        left: 0;
         border-radius: 50%;
       }
-
-      &:hover,
-      &:focus {
-        background-color: ${theme.colors.social};
-        border-color: ${theme.colors.social};
-      }
-    `};
-
-  width: ${({ buttonWidth }) => buttonWidth !== 0 && `${buttonWidth}px !important`};
-
-  font-size: ${({ fontSize }) => fontSize && `${fontSize * 0.75}rem`};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
-    font-size: ${({ fontSize }) => fontSize && `${fontSize}rem`};
-  }
+    `}
 `;
 
 const Styled = {

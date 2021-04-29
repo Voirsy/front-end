@@ -1,45 +1,50 @@
+import hexToRgba from 'hex-rgba';
 import styled, { css } from 'styled-components';
+import { Colors } from '../../../types/global';
 import { StyledIconButtonProps } from './types';
 
-const Button = styled.button.attrs<StyledIconButtonProps>(
-  ({ theme, primaryColor, isAvatar, borderWidth, isPrimary }) => ({
-    primaryColor: primaryColor || theme.colors.purple.normal,
-    borderWidth: isAvatar ? 0 : borderWidth,
-    isPrimary: isAvatar ? true : isPrimary,
-  })
-)<StyledIconButtonProps>`
+const Button = styled.button.attrs<StyledIconButtonProps>(({ type }) => ({
+  type: type || 'button',
+}))<StyledIconButtonProps>`
   border-radius: 50%;
   cursor: pointer;
+  border-style: solid;
+  transition: background-color 150ms ease-in-out;
   display: grid;
   place-items: center;
-  border-style: solid;
-  border-width: ${({ borderWidth }) => `${borderWidth}px`};
-  width: ${({ buttonSize }) => `${buttonSize * 0.75}rem`};
-  height: ${({ buttonSize }) => `${buttonSize * 0.75}rem`};
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
-    width: ${({ buttonSize }) => `${buttonSize}rem`};
-    height: ${({ buttonSize }) => `${buttonSize}rem`};
-  }
+  ${({ theme, $size, color, variant, iconWidth = 2, isAvatar, avatarUrl, borderRadius }) => css`
+    background-color: ${
+      variant === 'contained' ? theme.colors[Colors[color]].normal : 'transparent'
+    };
+    border-radius: ${borderRadius ? `${borderRadius}rem` : '50%'};
+    border-width: ${variant === 'default' ? 0 : 2}px;
+    border-color: ${theme.colors[Colors[color]].normal};
+    width: ${$size ? `${$size}rem` : '100%'};
+    height: ${$size ? `${$size}rem` : '100%'};
 
-  background-color: ${({ primaryColor, isPrimary }) => (isPrimary ? primaryColor : 'transparent')};
+    :hover:not(:disabled),
+    :focus:not(:disabled) {
+      background-color: ${
+        variant === 'contained'
+          ? hexToRgba(theme.colors[Colors[color]].normal, 90)
+          : hexToRgba(theme.colors[Colors[color]].normal, 20)
+      };
+    }
 
-  border-color: ${({ primaryColor, isPrimary, theme }) =>
-    isPrimary ? primaryColor : theme.colors.grayColors.dark};
+    & svg {
+      stroke-width: ${iconWidth}px;
+    }
 
-  ${({ isAvatar, avatarUrl }) =>
-    isAvatar &&
-    avatarUrl &&
-    css`
-      background: url(${avatarUrl}) center no-repeat;
-      background-size: cover;
-    `};
-
-  & svg {
-    stroke-width: ${({ iconWidth }) => `${iconWidth}px`};
-    stroke: ${({ iconColor, isPrimary, theme }) =>
-      isPrimary ? iconColor || theme.colors.white : iconColor || theme.colors.grayColors.dark};
-  }
+    ${
+      isAvatar &&
+      avatarUrl &&
+      css`
+        background: url(${avatarUrl}) center no-repeat;
+        background-size: cover;
+      `
+    }};
+  `}
 `;
 
 const Styled = { Button };

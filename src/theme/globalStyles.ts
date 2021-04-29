@@ -39,7 +39,8 @@ const GlobalStyles = styled.createGlobalStyle`
   }
 
   button,
-  input {
+  input,
+  textarea {
     font-family: ${({ theme }) => theme.fonts.roboto};
   }
 `;

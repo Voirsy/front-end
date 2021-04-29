@@ -1,50 +1,33 @@
-import { BeatLoader } from 'react-spinners';
 import { FcGoogle } from 'react-icons/fc';
 import { ButtonProps } from './types';
 import Styled from './styles';
-import theme from '../../../theme/theme';
+// import theme from '../../../theme/theme';
+import Spinner from '../Spinner';
 
 const Button = ({
-  label,
-  type = 'button',
-  size = 'small',
-  borderRadius = 1,
-  isPrimary = true,
-  isWarning = false,
-  border = true,
-  isPrimaryColor = false,
-  isBold = false,
-  buttonWidth = 0,
+  children,
   isSocial = false,
   isLoading = false,
-  ariaLabel,
-  fontSize,
-  onClick = () => {},
+  color = 'primary',
+  iconColor = 'black',
+  variant = 'default',
+  width,
+  height,
+  ...props
 }: ButtonProps) => (
   <Styled.Button
-    type={type}
-    size={isSocial ? 'medium' : size}
-    borderRadius={isSocial ? 30 : borderRadius}
-    isPrimary={isPrimary}
-    isWarning={isWarning}
-    border={border}
-    isPrimaryColor={isPrimaryColor}
-    isBold={isBold}
-    buttonWidth={buttonWidth}
     isLoading={isLoading}
-    onClick={onClick}
     isSocial={isSocial}
-    fontSize={fontSize}
-    aria-label={ariaLabel}
+    color={isSocial ? 'social' : color}
+    variant={isSocial ? 'contained' : variant}
+    $width={width}
+    $height={isSocial && !height ? 4 : height}
+    disabled={isLoading}
+    {...props}
   >
-    {isLoading && (
-      <BeatLoader
-        color={theme.colors.grayColors.dark}
-        size={size === 'small' || size === 'verysmall' ? 12 : 16}
-      />
-    )}
+    {isLoading && <Spinner size={height ? `calc(${height}rem * 0.75)` : '80%'} color={iconColor} />}
     {isSocial && <FcGoogle />}
-    {!isLoading && label}
+    {!isLoading && children}
   </Styled.Button>
 );
 

@@ -1,19 +1,23 @@
-export type SharedProps = {
-  buttonSize: number;
-  iconWidth: number;
-  borderWidth: number;
-  isPrimary: boolean;
-  primaryColor?: string;
-  isAvatar: boolean;
+import { ButtonType, ButtonVariant, Color } from '../../../types/global';
+
+export interface SharedProps {
+  iconWidth?: number;
+  isAvatar?: boolean;
   avatarUrl?: string;
-};
+  borderRadius?: number;
+  variant?: ButtonVariant;
+}
 
-export type IconButtonProps = SharedProps & {
-  ariaLabel: string;
-  icon: JSX.Element;
-  type: 'button' | 'submit' | 'reset';
-};
+export interface IconButtonProps extends SharedProps {
+  children: JSX.Element;
+  type?: ButtonType;
+  size?: number;
+  color?: Color;
+  'aria-label': string;
+  onClick?: () => void;
+}
 
-export type StyledIconButtonProps = SharedProps & {
-  iconColor: string;
-};
+export interface StyledIconButtonProps extends SharedProps {
+  $size?: number;
+  color: Color;
+}

@@ -6,14 +6,8 @@ export default {
   title: 'Components/Button',
   component: Button,
   argTypes: {
-    label: {
+    children: {
       description: 'Main label of the button',
-    },
-    isPrimary: {
-      description: "Font-size of button text given in rem's",
-    },
-    size: {
-      control: 'select',
     },
     type: {
       control: 'select',
@@ -27,103 +21,105 @@ export default {
       },
       description: "Value in rem's",
     },
-    isWarning: {
-      description: "When it's `true` the primary color of the button is red",
-    },
     isBold: {
       description: "When it's `true` `font-weight` is 700 otherwise 500",
-    },
-    border: {
-      description: "When it's `true` `border` is 1px otherwise 0px",
-    },
-    isPrimaryColor: {
-      description:
-        'Whenever the color of the text, border and icon should be purple. It should be pass only when button is not primary',
     },
     fontSize: {
       description: "Font-size of button text given in rem's",
     },
   },
+  decorators: [(S) => <div style={{ width: '22rem', height: '3.8rem' }}>{S()}</div>],
 } as Meta;
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Add',
+  children: 'Add',
+  variant: 'contained',
+  width: 15,
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  label: 'Cancel',
-  ariaLabel: 'Cancel removing crew member',
-  isPrimary: false,
-  size: 'large',
+  children: 'Cancel',
+  color: 'secondary',
+  variant: 'outlined',
+  height: 5,
+  width: 20,
+  borderRadius: 0.5,
+  'aria-label': 'Cancel removing crew member',
 };
 
 export const Warning = Template.bind({});
 Warning.args = {
-  label: 'Delete',
-  ariaLabel: 'Remove crew member',
-  isWarning: true,
-  size: 'large',
+  children: 'Delete',
+  color: 'warning',
+  variant: 'contained',
+  height: 5,
+  width: 20,
+  borderRadius: 0.5,
+  'aria-label': 'Remove crew member',
 };
 
 export const SmallWarning = Template.bind({});
 SmallWarning.args = {
-  label: 'Delete salon',
-  isPrimary: false,
-  isWarning: true,
-  size: 'verysmall',
+  children: 'Delete salon',
+  color: 'warning',
+  variant: 'outlined',
+  height: 3,
+  width: 10,
+  borderRadius: 0.5,
 };
 
 export const WithoutBorder = Template.bind({});
 WithoutBorder.args = {
-  label: 'Back',
-  ariaLabel: 'Back to step 2',
-  isPrimary: false,
-  border: false,
+  children: 'Back',
+  color: 'secondary',
+  width: 12,
+  'aria-label': 'Back to step 2',
 };
 
 export const WithPrimaryColor = Template.bind({});
 WithPrimaryColor.args = {
-  label: 'Save',
-  ariaLabel: 'Save changes',
-  size: 'verysmall',
-  isPrimary: false,
-  border: false,
-  isPrimaryColor: true,
-  isBold: true,
-  buttonWidth: 50,
+  children: 'Save',
+  width: 6,
+  height: 3,
+  'aria-label': 'Save changes',
 };
 
 export const WithPrimaryColorAndBorder = Template.bind({});
 WithPrimaryColorAndBorder.args = {
-  label: '+ Add',
-  ariaLabel: 'Add new service',
-  size: 'medium',
-  isPrimary: false,
-  isBold: true,
-  isPrimaryColor: true,
+  children: '+ Add',
+  variant: 'outlined',
+  'aria-label': 'Add new service',
 };
 
 export const IsLoading = Template.bind({});
 IsLoading.args = {
-  label: '+ Add',
-  size: 'medium',
+  children: '+ Add',
   isLoading: true,
+  variant: 'contained',
+  color: 'secondary',
+  iconColor: 'lightblue',
 };
 
 export const SignIn = Template.bind({});
 SignIn.args = {
-  label: 'Sign in',
-  ariaLabel: 'Sign in to Voirsy',
+  children: 'Sign in',
+  variant: 'contained',
+  width: 15,
+  height: 5,
+  'aria-label': 'Sign in to Voirsy',
   borderRadius: 50,
   fontSize: 2,
 };
 
 export const IsSocial = Template.bind({});
 IsSocial.args = {
-  label: 'Continue with Google',
+  children: 'Continue with Google',
+  width: 30,
+  borderRadius: 50,
+  fontSize: 1.4,
   isSocial: true,
 };

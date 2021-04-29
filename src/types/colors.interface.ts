@@ -19,6 +19,7 @@ export interface Categories {
 
 export interface GrayColors {
   dark: string;
+  normal: string;
   dark020: string;
   dark035: string;
   dark050: string;
