@@ -10,7 +10,6 @@ const Button = styled.button.attrs<StyledIconButtonProps>(({ type }) => ({
   cursor: pointer;
   border-style: solid;
   transition: background-color 150ms ease-in-out;
-  outline: none;
   display: grid;
   place-items: center;
 

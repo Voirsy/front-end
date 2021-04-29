@@ -11,7 +11,6 @@ const Button = styled.button.attrs<StyledButtonProps>(({ $height, type }) => ({
   cursor: pointer;
   border-style: solid;
   font-weight: 500;
-  outline: none;
   display: flex;
   justify-content: center;
   align-items: center;
