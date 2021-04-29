@@ -8,21 +8,24 @@ const Label = ({
   htmlFor,
   inputHeight,
   type,
-}: LabelProps) => (
-  <Styled.Label
-    type={type}
-    variant={variant}
-    inputValue={inputValue}
-    htmlFor={htmlFor}
-    inputHeight={inputHeight}
-    className={`${
-      variant === 'login' || variant === 'placeholder' || variant === 'search'
-        ? 'visually-hidden'
-        : ''
-    }`}
-  >
-    {children}
-  </Styled.Label>
-);
+}: LabelProps) => {
+  const labelClass =
+    variant === 'login' || variant === 'placeholder' || variant === 'search'
+      ? 'visually-hidden'
+      : '';
+
+  return (
+    <Styled.Label
+      type={type}
+      variant={variant}
+      inputValue={inputValue}
+      htmlFor={htmlFor}
+      inputHeight={inputHeight}
+      className={labelClass}
+    >
+      {children}
+    </Styled.Label>
+  );
+};
 
 export default Label;
