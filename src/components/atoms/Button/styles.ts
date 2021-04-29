@@ -21,17 +21,18 @@ const Button = styled.button.attrs<StyledButtonProps>(({ $height, type }) => ({
     background-color: ${variant === 'contained'
       ? theme.colors[Colors[color]].normal
       : 'transparent'};
-    font-size: ${fontSize
-      ? `${fontSize}rem`
-      : updatedHeight?.includes('%')
-      ? '1.8rem'
-      : `calc(${updatedHeight} * 0.4)`};
+    font-size: ${updatedHeight?.includes('%') ? '1.8rem' : `calc(${updatedHeight} * 0.4)`};
     border-radius: ${borderRadius ? `${borderRadius}` : '1'}rem;
     border-width: ${variant === 'default' ? 0 : 1}px;
     border-color: ${theme.colors[Colors[color]].normal};
     color: ${variant === 'contained' ? theme.colors.white : theme.colors[Colors[color]].normal};
     width: ${$width ? `${$width}rem` : '100%'};
     height: ${updatedHeight};
+
+    ${fontSize &&
+    css`
+      font-size: ${fontSize}rem;
+    `}
 
     :hover:not(:disabled),
     :focus:not(:disabled) {

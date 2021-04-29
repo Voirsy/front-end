@@ -1,7 +1,10 @@
 import styled, { css } from 'styled-components';
 import { StyledLabelProps } from './types';
 
-const Label = styled.label<StyledLabelProps>`
+const Label = styled.label.attrs<StyledLabelProps>(({ type, inputHeight }) => ({
+  percentages: type === 'textarea' ? 0 : 50,
+  positionFromTop: type === 'textarea' ? 1.2 : inputHeight / 2,
+}))<StyledLabelProps>`
   font-weight: 400;
   font-family: ${({ theme, variant }) =>
     variant !== 'withDisable' ? theme.fonts.montserrat : theme.fonts.roboto};
@@ -19,7 +22,7 @@ const Label = styled.label<StyledLabelProps>`
     width: 1px;
   }
 
-  ${({ inputValue, theme, inputHeight, variant, type }) =>
+  ${({ inputValue, theme, variant, percentages, positionFromTop }) =>
     variant === 'animate' &&
     css`
       cursor: auto;
@@ -30,13 +33,7 @@ const Label = styled.label<StyledLabelProps>`
       left: 1.2rem;
       background: ${theme.colors.white};
       transform: scale(${inputValue ? '0.8' : '1'})
-        translateY(
-          ${inputValue
-            ? '-60%'
-            : `calc(${type === 'textarea' ? 1.2 : inputHeight / 2}rem - ${
-                type === 'textarea' ? 0 : 50
-              }%)`}
-        );
+        translateY(${inputValue ? '-60%' : `calc(${positionFromTop}rem - ${percentages}%)`});
       transform-origin: 0;
       transition: transform 0.2s ease;
     `}
