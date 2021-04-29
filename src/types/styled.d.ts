@@ -2,6 +2,7 @@ import 'styled-components';
 import { Breakpoints } from './breakpoints.interface';
 import { Categories, GrayColors, BlueOutline, Dark, Black, Purple, Red } from './colors.interface';
 import { Fonts } from './fonts.interface';
+import { Sizes } from './sizes.interface';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
@@ -21,5 +22,6 @@ declare module 'styled-components' {
     };
     breakpoints: Breakpoints;
     fonts: Fonts;
+    sizes: Sizes;
   }
 }
