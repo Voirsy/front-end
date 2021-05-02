@@ -8,7 +8,7 @@ import IconButton from '../../atoms/IconButton';
 import theme from '../../../theme/theme';
 
 const ProfileMenu = ({ modalToggle }: { modalToggle: (val: boolean) => void }) => (
-  <ModalTemplate isAdjustedToParent modalToggle={modalToggle}>
+  <ModalTemplate modalToggle={modalToggle} type="adjusted">
     <Header>
       <MainTitle>Voirsy</MainTitle>
       <IconButton
