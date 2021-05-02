@@ -4,9 +4,9 @@ import { Colors } from '../../../types/global';
 import { StyledButtonProps } from './types';
 
 const Button = styled.button.attrs<StyledButtonProps>(({ $height, type }) => ({
-  updatedHeight: $height ? `${$height}rem` : '100%',
+  $updatedHeight: $height ? `${$height}rem` : '100%',
   type: type || 'button',
-}))<StyledButtonProps & { updatedHeight?: string }>`
+}))<StyledButtonProps & { $updatedHeight?: string }>`
   overflow: hidden;
   cursor: pointer;
   border-style: solid;
@@ -16,17 +16,17 @@ const Button = styled.button.attrs<StyledButtonProps>(({ $height, type }) => ({
   align-items: center;
   transition: background-color 150ms ease-in-out;
 
-  ${({ theme, color, variant, $width, updatedHeight, borderRadius, fontSize }) => css`
+  ${({ theme, color, variant, $width, $updatedHeight, $borderRadius, fontSize }) => css`
     background-color: ${variant === 'contained'
       ? theme.colors[Colors[color]].normal
       : 'transparent'};
-    font-size: ${updatedHeight?.includes('%') ? '1.8rem' : `calc(${updatedHeight} * 0.4)`};
-    border-radius: ${borderRadius ? `${borderRadius}` : '1'}rem;
+    font-size: ${$updatedHeight?.includes('%') ? '1.8rem' : `calc(${$updatedHeight} * 0.4)`};
+    border-radius: ${$borderRadius ? `${$borderRadius}` : '1'}rem;
     border-width: ${variant === 'default' ? 0 : 1}px;
     border-color: ${theme.colors[Colors[color]].normal};
     color: ${variant === 'contained' ? theme.colors.white : theme.colors[Colors[color]].normal};
     width: ${$width ? `${$width}rem` : '100%'};
-    height: ${updatedHeight};
+    height: ${$updatedHeight};
 
     ${fontSize &&
     css`
@@ -45,14 +45,14 @@ const Button = styled.button.attrs<StyledButtonProps>(({ $height, type }) => ({
     cursor: no-drop;
   }
 
-  ${({ theme, isSocial, updatedHeight }) =>
+  ${({ theme, isSocial, $updatedHeight }) =>
     isSocial &&
     css`
       position: relative;
 
       > svg {
-        width: calc(${updatedHeight!} * 0.7);
-        height: calc(${updatedHeight!} * 0.7);
+        width: calc(${$updatedHeight!} * 0.7);
+        height: calc(${$updatedHeight!} * 0.7);
         background: ${theme.colors.white};
         transform: translate(20%, -50%);
         position: absolute;
