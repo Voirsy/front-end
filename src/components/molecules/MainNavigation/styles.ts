@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Wrapper = styled.nav`
@@ -13,7 +13,7 @@ const MenuPosition = styled.li`
   height: 3.5rem;
 `;
 
-const Link = styled(NavLink)`
+const Button = styled.button`
   width: 100%;
   height: 100%;
   display: grid;
@@ -21,9 +21,12 @@ const Link = styled(NavLink)`
   align-items: center;
   color: ${({ theme }) => theme.colors.grayColors.dark};
   transition: background-color 100ms ease-in-out;
+  background: transparent;
+  border: 0;
 
   > span {
     font-size: 1.7rem;
+    justify-self: left;
   }
 
   > svg {
@@ -42,6 +45,8 @@ const Link = styled(NavLink)`
   }
 `;
 
-const Styled = { Wrapper, MenuPosition, Link };
+const Link = styled(Button)``;
+
+const Styled = { Wrapper, MenuPosition, Button, Link };
 
 export default Styled;

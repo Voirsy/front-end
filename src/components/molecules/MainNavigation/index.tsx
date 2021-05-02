@@ -1,5 +1,6 @@
 import { FiUser, FiHeart, FiCalendar, FiLogOut, FiBox } from 'react-icons/fi';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Styled from './styles';
 import Modal from '../../templates/Modal/index';
 import theme from '../../../theme/theme';
@@ -43,6 +44,7 @@ const MainNavigation = ({ modalToggle }: { modalToggle: (val: boolean) => void }
   const { windowSize } = useWindowSize();
   const {
     userInfo: { type: userType },
+    logout,
   } = useAuthContextState();
 
   const positionTop =
@@ -69,10 +71,17 @@ const MainNavigation = ({ modalToggle }: { modalToggle: (val: boolean) => void }
             <React.Fragment key={el.label}>
               {el.role.includes(userType || '') ? (
                 <Styled.MenuPosition>
-                  <Styled.Link activeClassName="selected" to={el.to}>
-                    {el.icon}
-                    <span>{el.label}</span>
-                  </Styled.Link>
+                  {el.to === '/home' ? (
+                    <Styled.Button onClick={logout}>
+                      {el.icon}
+                      <span>{el.label}</span>
+                    </Styled.Button>
+                  ) : (
+                    <Styled.Link as={NavLink} activeClassName="selected" to={el.to}>
+                      {el.icon}
+                      <span>{el.label}</span>
+                    </Styled.Link>
+                  )}
                 </Styled.MenuPosition>
               ) : null}
             </React.Fragment>
