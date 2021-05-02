@@ -7,6 +7,10 @@ const Title = styled.h1`
   @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
     font-size: 2.8rem;
   }
+
+  > a {
+    color: ${({ theme }) => theme.colors.black.normal};
+  }
 `;
 
 const Styled = { Title };
