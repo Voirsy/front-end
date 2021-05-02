@@ -1,8 +1,8 @@
-import { ModalToggle } from './types';
+import { ToggleModalFunc } from '../../../types/global';
 
 export const outsideClick = (
   ref: React.RefObject<HTMLDivElement>,
-  modalToggle: ModalToggle,
+  modalToggle: ToggleModalFunc,
   e: MouseEvent | TouchEvent,
   ariaIdentifier: string
 ) => {
@@ -15,6 +15,6 @@ export const outsideClick = (
   modalToggle(false);
 };
 
-export const handleEscape = (modalToggle: ModalToggle, e: KeyboardEvent): void => {
+export const handleEscape = (modalToggle: ToggleModalFunc, e: KeyboardEvent): void => {
   if (e.key === 'Escape') modalToggle(false);
 };

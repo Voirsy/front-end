@@ -1,7 +1,7 @@
-export type ModalToggle = (val: boolean) => void;
+import { ModalType, ToggleModalFunc } from '../../../types/global';
 
 export interface StyledModalContentProps {
-  $type?: 'centered' | 'mixed' | 'adjusted' | 'positioned';
+  $type?: ModalType;
 }
 
 export interface StyledModalContainerProps extends StyledModalContentProps {
@@ -17,7 +17,7 @@ export interface StyledModalContainerProps extends StyledModalContentProps {
 
 export interface ModalTemplateProps extends StyledModalContainerProps {
   children: React.ReactNode;
-  modalToggle: ModalToggle;
+  modalToggle: ToggleModalFunc;
   ariaIdentifier?: string;
-  type?: 'centered' | 'mixed' | 'adjusted' | 'positioned';
+  type?: ModalType;
 }
