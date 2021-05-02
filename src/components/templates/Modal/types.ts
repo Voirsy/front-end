@@ -1,3 +1,4 @@
+import { MotionProps } from 'framer-motion/types/motion/types';
 import { ModalType, ToggleModalFunc } from '../../../types/global';
 
 export interface StyledModalContentProps {
@@ -12,6 +13,12 @@ export interface StyledModalContainerProps extends StyledModalContentProps {
     left?: number;
     top?: number;
     right?: number;
+  };
+  backgroundAnimation?: {
+    [P in keyof MotionProps]?: MotionProps[P];
+  };
+  contentAnimation?: {
+    [P in keyof MotionProps]?: MotionProps[P];
   };
 }
 

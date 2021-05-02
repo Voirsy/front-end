@@ -8,7 +8,16 @@ import IconButton from '../../atoms/IconButton';
 import theme from '../../../theme/theme';
 
 const ProfileMenu = ({ modalToggle }: { modalToggle: (val: boolean) => void }) => (
-  <ModalTemplate modalToggle={modalToggle} type="adjusted">
+  <ModalTemplate
+    modalToggle={modalToggle}
+    type="adjusted"
+    backgroundAnimation={{
+      animate: { x: 0 },
+      initial: { x: '-100%' },
+      exit: { x: '-100%' },
+      transition: { ease: 'easeInOut', duration: 0.2 },
+    }}
+  >
     <Header>
       <MainTitle>Voirsy</MainTitle>
       <IconButton

@@ -1,7 +1,8 @@
+import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 import { StyledModalContentProps, StyledModalContainerProps } from './types';
 
-const ModalContainer = styled.div<StyledModalContainerProps>`
+const ModalContainer = styled(motion.div)<StyledModalContainerProps>`
   position: fixed;
   z-index: 20;
   background-color: green;
@@ -48,7 +49,7 @@ const ModalContainer = styled.div<StyledModalContainerProps>`
   `};
 `;
 
-const ModalContent = styled.div<StyledModalContentProps>`
+const ModalContent = styled(motion.div)<StyledModalContentProps>`
   background-color: ${({ theme }) => theme.colors.white};
 
   ${({ $type, theme }) => css`

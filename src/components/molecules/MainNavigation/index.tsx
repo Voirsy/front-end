@@ -42,6 +42,11 @@ const MainNavigation = ({ modalToggle }: { modalToggle: (val: boolean) => void }
       position={{ top: positionTop, right: 1 }}
       borderRadius={2}
       ariaIdentifier="Open main navigation"
+      backgroundAnimation={{
+        initial: { y: 30, opacity: 0 },
+        animate: { y: 0, opacity: 1 },
+        transition: { ease: 'easeOut', duration: 0.15 },
+      }}
     >
       <Styled.Wrapper>
         <ul>

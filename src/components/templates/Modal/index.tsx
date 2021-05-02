@@ -15,6 +15,7 @@ const ModalTemplate = ({
   position = {},
   borderRadius = 0.5,
   ariaIdentifier = '',
+  ...props
 }: ModalTemplateProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -43,8 +44,9 @@ const ModalTemplate = ({
       $type={type}
       position={position}
       borderRadius={borderRadius}
+      {...props.backgroundAnimation}
     >
-      <Styled.ModalContent ref={modalRef} $type={type}>
+      <Styled.ModalContent ref={modalRef} $type={type} {...props.contentAnimation}>
         {children}
       </Styled.ModalContent>
     </Styled.ModalContainer>,

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FiAlignJustify } from 'react-icons/fi';
+import { AnimatePresence } from 'framer-motion';
 import useModal from '../../../hooks/useModal';
 import Header from '../../atoms/Header';
 import IconButton from '../../atoms/IconButton';
@@ -54,9 +55,11 @@ const HeaderTemplate = ({ children }: HeaderTemplateTypes) => {
           isModalOpen={mainNavigation.isModalOpen}
         />
       </Header>
-      {menuOptions.hasMenu && viewNavigation.isModalOpen ? (
-        <ProfileMenu modalToggle={viewNavigation.modalToggle} />
-      ) : null}
+      <AnimatePresence initial={false}>
+        {menuOptions.hasMenu && viewNavigation.isModalOpen ? (
+          <ProfileMenu modalToggle={viewNavigation.modalToggle} />
+        ) : null}
+      </AnimatePresence>
       {mainNavigation.isModalOpen && <MainNavigation modalToggle={mainNavigation.modalToggle} />}
       {children}
     </>
