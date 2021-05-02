@@ -9,7 +9,7 @@ export interface SharedProps {
 }
 
 export interface IconButtonProps extends SharedProps {
-  children: JSX.Element;
+  children?: JSX.Element;
   type?: ButtonType;
   size?: number;
   color?: Color;
