@@ -10,12 +10,14 @@ import ProfileMenu from '../../molecules/ProfileMenu';
 import Styled from './styles';
 import { HeaderTemplateTypes } from './types';
 import Button from '../../atoms/Button';
+import MainNavigation from '../../molecules/MainNavigation';
 
 const menuPaths = ['/profile', '/saloons'];
 
 const HeaderTemplate = ({ children }: HeaderTemplateTypes) => {
   const { isAuthenticated, userInfo } = useAuthContextState();
-  const { isModalOpen, modalToggle } = useModal();
+  const viewNavigation = useModal();
+  const mainNavigation = useModal();
   const [menuOptions, setMenuOptions] = useState({
     hasMenu: false,
     route: '',
@@ -26,7 +28,8 @@ const HeaderTemplate = ({ children }: HeaderTemplateTypes) => {
     menuPaths.forEach((el) => {
       if (pathname.includes(el)) setMenuOptions({ hasMenu: true, route: el });
     });
-    if (isModalOpen) modalToggle(false);
+    if (viewNavigation.isModalOpen) viewNavigation.modalToggle(false);
+    if (mainNavigation.isModalOpen) mainNavigation.modalToggle(false);
   }, [pathname]);
 
   return (
@@ -35,7 +38,11 @@ const HeaderTemplate = ({ children }: HeaderTemplateTypes) => {
         <Styled.ContentWrapper>
           {menuOptions.hasMenu ? (
             <Styled.MenuIconWrapper>
-              <IconButton onClick={() => modalToggle(true)} aria-label="Open menu" color="black">
+              <IconButton
+                onClick={() => viewNavigation.modalToggle(true)}
+                aria-label="Open profile navigation"
+                color="black"
+              >
                 <FiAlignJustify size="70%" />
               </IconButton>
             </Styled.MenuIconWrapper>
@@ -49,8 +56,9 @@ const HeaderTemplate = ({ children }: HeaderTemplateTypes) => {
               <Styled.AvatarWrapper>
                 <IconButton
                   isAvatar
-                  aria-label="Open menu"
+                  aria-label="Open main navigation"
                   avatarUrl={userInfo.avatarUrl ?? undefined}
+                  onClick={() => mainNavigation.modalToggle(!mainNavigation.isModalOpen)}
                 />
               </Styled.AvatarWrapper>
             </>
@@ -69,7 +77,10 @@ const HeaderTemplate = ({ children }: HeaderTemplateTypes) => {
           )}
         </Styled.UserInfoContentWrapper>
       </Header>
-      {menuOptions.hasMenu && isModalOpen ? <ProfileMenu modalToggle={modalToggle} /> : null}
+      {menuOptions.hasMenu && viewNavigation.isModalOpen ? (
+        <ProfileMenu modalToggle={viewNavigation.modalToggle} />
+      ) : null}
+      {mainNavigation.isModalOpen && <MainNavigation modalToggle={mainNavigation.modalToggle} />}
       {children}
     </>
   );
