@@ -1,34 +1,49 @@
-import { FiUser, FiHeart, FiCalendar, FiLogOut } from 'react-icons/fi';
+import { FiUser, FiHeart, FiCalendar, FiLogOut, FiBox } from 'react-icons/fi';
+import React from 'react';
 import Styled from './styles';
 import Modal from '../../templates/Modal/index';
 import theme from '../../../theme/theme';
 import useWindowSize from '../../../hooks/useWindowSize';
+import { useAuthContextState } from '../../../context/authContext';
 
 const data = [
   {
     label: 'Profile',
     icon: <FiUser />,
     to: '/profile',
+    role: ['normal', 'business'],
   },
   {
     label: 'Favorites',
     icon: <FiHeart />,
     to: '/favorites',
+    role: ['normal'],
+  },
+  {
+    label: 'Salons',
+    icon: <FiBox />,
+    to: '/salons',
+    role: ['business'],
   },
   {
     label: 'Schedule',
     icon: <FiCalendar />,
     to: '/schedule',
+    role: ['normal', 'business'],
   },
   {
     label: 'Sign out',
     icon: <FiLogOut />,
     to: '/home',
+    role: ['normal', 'business'],
   },
 ];
 
 const MainNavigation = ({ modalToggle }: { modalToggle: (val: boolean) => void }) => {
   const { windowSize } = useWindowSize();
+  const {
+    userInfo: { type: userType },
+  } = useAuthContextState();
 
   const positionTop =
     windowSize.width < parseInt(theme.breakpoints.tabletPortrait.replace('px', ''), 10)
@@ -51,12 +66,16 @@ const MainNavigation = ({ modalToggle }: { modalToggle: (val: boolean) => void }
       <Styled.Wrapper>
         <ul>
           {data.map((el) => (
-            <Styled.MenuPosition key={el.label}>
-              <Styled.Link activeClassName="selected" to={el.to}>
-                {el.icon}
-                <span>{el.label}</span>
-              </Styled.Link>
-            </Styled.MenuPosition>
+            <React.Fragment key={el.label}>
+              {el.role.includes(userType || '') ? (
+                <Styled.MenuPosition>
+                  <Styled.Link activeClassName="selected" to={el.to}>
+                    {el.icon}
+                    <span>{el.label}</span>
+                  </Styled.Link>
+                </Styled.MenuPosition>
+              ) : null}
+            </React.Fragment>
           ))}
         </ul>
       </Styled.Wrapper>
