@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FiAlignJustify } from 'react-icons/fi';
-import { useAuthContextState } from '../../../context/authContext';
 import useModal from '../../../hooks/useModal';
 import Header from '../../atoms/Header';
 import IconButton from '../../atoms/IconButton';
@@ -9,13 +8,12 @@ import MainTitle from '../../atoms/MainTitle';
 import ProfileMenu from '../../molecules/ProfileMenu';
 import Styled from './styles';
 import { HeaderTemplateTypes } from './types';
-import Button from '../../atoms/Button';
 import MainNavigation from '../../molecules/MainNavigation';
+import UserInfo from './userInfo';
 
 const menuPaths = ['/profile', '/saloons'];
 
 const HeaderTemplate = ({ children }: HeaderTemplateTypes) => {
-  const { isAuthenticated, userInfo } = useAuthContextState();
   const viewNavigation = useModal();
   const mainNavigation = useModal();
   const [menuOptions, setMenuOptions] = useState({
@@ -47,35 +45,14 @@ const HeaderTemplate = ({ children }: HeaderTemplateTypes) => {
               </IconButton>
             </Styled.MenuIconWrapper>
           ) : null}
-          <MainTitle>Voirsy</MainTitle>
+          <MainTitle>
+            <Link to="/">Voirsy</Link>
+          </MainTitle>
         </Styled.ContentWrapper>
-        <Styled.UserInfoContentWrapper>
-          {isAuthenticated() ? (
-            <>
-              <Styled.UserInfo>{userInfo.name}</Styled.UserInfo>
-              <Styled.AvatarWrapper>
-                <IconButton
-                  isAvatar
-                  aria-label="Open main navigation"
-                  avatarUrl={userInfo.avatarUrl ?? undefined}
-                  onClick={() => mainNavigation.modalToggle(!mainNavigation.isModalOpen)}
-                />
-              </Styled.AvatarWrapper>
-            </>
-          ) : (
-            <Styled.ButtonWrapper>
-              <Button
-                variant="contained"
-                borderRadius={20}
-                as={Link}
-                to="/signin"
-                className="custom"
-              >
-                Sign in
-              </Button>
-            </Styled.ButtonWrapper>
-          )}
-        </Styled.UserInfoContentWrapper>
+        <UserInfo
+          modalToggle={mainNavigation.modalToggle}
+          isModalOpen={mainNavigation.isModalOpen}
+        />
       </Header>
       {menuOptions.hasMenu && viewNavigation.isModalOpen ? (
         <ProfileMenu modalToggle={viewNavigation.modalToggle} />
