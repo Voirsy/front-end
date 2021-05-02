@@ -67,3 +67,7 @@ export interface Purple {
   _050: string;
   _090: string;
 }
+
+export interface UserNameGray {
+  normal: string;
+}
