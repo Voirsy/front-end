@@ -14,19 +14,21 @@ import UserInfo from './userInfo';
 
 const menuPaths = ['/profile', '/saloons'];
 
+const initialState = { hasMenu: false, route: '' };
+
 const HeaderTemplate = ({ children }: HeaderTemplateTypes) => {
   const viewNavigation = useModal();
   const mainNavigation = useModal();
-  const [menuOptions, setMenuOptions] = useState({
-    hasMenu: false,
-    route: '',
-  });
+  const [menuOptions, setMenuOptions] = useState(initialState);
   const { pathname } = useLocation();
 
   useEffect(() => {
-    menuPaths.forEach((el) => {
-      if (pathname.includes(el)) setMenuOptions({ hasMenu: true, route: el });
-    });
+    const routeIndex = menuPaths.findIndex((el) => pathname.includes(el));
+    if (routeIndex !== -1) {
+      setMenuOptions({ hasMenu: true, route: menuPaths[routeIndex] });
+    } else {
+      setMenuOptions(initialState);
+    }
     if (viewNavigation.isModalOpen) viewNavigation.modalToggle(false);
     if (mainNavigation.isModalOpen) mainNavigation.modalToggle(false);
   }, [pathname]);
