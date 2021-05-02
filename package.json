@@ -18,6 +18,7 @@
     "axios": "^0.21.1",
     "downshift": "^6.1.2",
     "formik": "^2.2.6",
+    "framer-motion": "^4.1.11",
     "hex-rgba": "^1.0.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
