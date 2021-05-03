@@ -1,4 +1,5 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
+import DeleteAccount from '../views/DeleteAccount';
 
 const ProfileRoutes = () => (
   <Switch>
@@ -6,7 +7,7 @@ const ProfileRoutes = () => (
       <div>Account view</div>
     </Route>
     <Route path="/profile/deleteaccount">
-      <div>Delete account view</div>
+      <DeleteAccount />
     </Route>
     <Route path="/profile/changepassword">
       <div>Change password view</div>
