@@ -46,7 +46,9 @@ const TextField = ({
       ) : (
         <Textarea inputHeight={inputHeight} inputWidth={inputWidth} {...field} />
       )}
-      {meta.touched && <Styled.ErrorMessage role="alert">{meta.error}</Styled.ErrorMessage>}
+      {meta.touched && meta.error && (
+        <Styled.ErrorMessage role="alert">{meta.error}</Styled.ErrorMessage>
+      )}
     </Styled.Wrapper>
   );
 };
