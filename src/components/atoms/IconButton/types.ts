@@ -13,11 +13,13 @@ export interface IconButtonProps extends SharedProps {
   type?: ButtonType;
   size?: number;
   color?: Color;
+  borderRadius?: number;
   'aria-label': string;
   onClick?: () => void;
 }
 
 export interface StyledIconButtonProps extends SharedProps {
   $size?: number;
-  color: Color;
+  $color: Color;
+  $borderRadius?: number;
 }

@@ -2,10 +2,8 @@ import React from 'react';
 import { ButtonType, ButtonVariant, Color } from '../../../types/global';
 
 export interface SharedProps {
-  $borderRadius?: number;
   isLoading?: boolean;
   isSocial?: boolean;
-  fontSize?: number;
   iconColor?: Color;
   variant?: ButtonVariant;
   as?: React.ElementType;
@@ -15,7 +13,9 @@ export interface SharedProps {
 export interface StyledButtonProps extends SharedProps {
   $width?: number;
   $height?: number;
-  color: Color;
+  $color: Color;
+  $fontSize?: number;
+  $borderRadius?: number;
 }
 
 export interface ButtonProps extends SharedProps {
@@ -26,6 +26,7 @@ export interface ButtonProps extends SharedProps {
   width?: number;
   height?: number;
   color?: Color;
+  fontSize?: number;
   'aria-label'?: string;
   onClick?: () => void;
 }
