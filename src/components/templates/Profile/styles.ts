@@ -19,16 +19,30 @@ const NavigationContainer = styled.div`
   }
 `;
 
+const ViewWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const ContentWrapper = styled.div`
+  width: 100%;
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const ViewTitle = styled.h2`
   font-size: 2.4rem;
   text-align: center;
-  margin-top: 3rem;
+  margin: 3rem 0;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
     font-size: 3rem;
   }
 `;
 
-const Styled = { Wrapper, NavigationContainer, ViewTitle };
+const Styled = { Wrapper, NavigationContainer, ViewTitle, ViewWrapper, ContentWrapper };
 
 export default Styled;

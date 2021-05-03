@@ -12,12 +12,12 @@ const ProfileTemplate = ({ children }: ProfileTemplateProps) => {
       <Styled.NavigationContainer>
         <ProfileNavigation navigationData={NavigationData} pathname={pathname} />
       </Styled.NavigationContainer>
-      <div>
+      <Styled.ViewWrapper>
         <Styled.ViewTitle>
           {NavigationData.find((el) => el.to === pathname)?.viewTitle || 'Account'}
         </Styled.ViewTitle>
-        {children}
-      </div>
+        <Styled.ContentWrapper>{children}</Styled.ContentWrapper>
+      </Styled.ViewWrapper>
     </Styled.Wrapper>
   );
 };
