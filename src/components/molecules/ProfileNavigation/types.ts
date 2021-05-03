@@ -1,5 +1,6 @@
-import React from 'react';
+import { NavData } from '../../templates/Profile/types';
 
 export interface ProfileNavigationProps {
-  children: React.ReactNode;
+  pathname: string;
+  navigationData: NavData[];
 }
