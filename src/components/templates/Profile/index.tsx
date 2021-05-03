@@ -13,7 +13,9 @@ const ProfileTemplate = ({ children }: ProfileTemplateProps) => {
         <ProfileNavigation navigationData={NavigationData} pathname={pathname} />
       </Styled.NavigationContainer>
       <div>
-        <h2>{NavigationData.find((el) => el.to === pathname)?.viewTitle || 'Account'}</h2>
+        <Styled.ViewTitle>
+          {NavigationData.find((el) => el.to === pathname)?.viewTitle || 'Account'}
+        </Styled.ViewTitle>
         {children}
       </div>
     </Styled.Wrapper>

@@ -19,6 +19,16 @@ const NavigationContainer = styled.div`
   }
 `;
 
-const Styled = { Wrapper, NavigationContainer };
+const ViewTitle = styled.h2`
+  font-size: 2.4rem;
+  text-align: center;
+  margin-top: 3rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tabletPortrait}) {
+    font-size: 3rem;
+  }
+`;
+
+const Styled = { Wrapper, NavigationContainer, ViewTitle };
 
 export default Styled;
