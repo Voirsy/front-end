@@ -2,6 +2,8 @@ export type Variant = 'default' | 'withDisable' | 'login' | 'placeholder' | 'ani
 export type InputType = 'text' | 'password' | 'email' | 'search' | 'textarea';
 export type ButtonType = 'button' | 'submit' | 'reset';
 export type ButtonVariant = 'default' | 'outlined' | 'contained';
+export type ToggleModalFunc = (val: boolean) => void;
+export type ModalType = 'centered' | 'mixed' | 'adjusted' | 'positioned';
 export type Color =
   | 'primary'
   | 'secondary'

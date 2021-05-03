@@ -71,6 +71,9 @@ const theme: DefaultTheme = {
       heartIcon: '#777777',
       salonDescTitle: '#29292F',
     },
+    userNameGray: {
+      normal: '#A7A7A7',
+    },
   },
   breakpoints: {
     mobilePortrait: '320px',

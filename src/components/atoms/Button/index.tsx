@@ -13,16 +13,20 @@ const Button = ({
   variant = 'default',
   width,
   height,
+  borderRadius,
+  fontSize,
   ...props
 }: ButtonProps) => (
   <Styled.Button
     isLoading={isLoading}
     isSocial={isSocial}
-    color={isSocial ? 'social' : color}
+    $color={isSocial ? 'social' : color}
     variant={isSocial ? 'contained' : variant}
     $width={width}
     $height={isSocial && !height ? 4 : height}
     disabled={isLoading}
+    $borderRadius={borderRadius}
+    $fontSize={fontSize}
     {...props}
   >
     {isLoading && <Spinner size={height ? `calc(${height}rem * 0.75)` : '80%'} color={iconColor} />}

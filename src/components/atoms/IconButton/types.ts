@@ -9,15 +9,17 @@ export interface SharedProps {
 }
 
 export interface IconButtonProps extends SharedProps {
-  children: JSX.Element;
+  children?: JSX.Element;
   type?: ButtonType;
   size?: number;
   color?: Color;
+  borderRadius?: number;
   'aria-label': string;
   onClick?: () => void;
 }
 
 export interface StyledIconButtonProps extends SharedProps {
   $size?: number;
-  color: Color;
+  $color: Color;
+  $borderRadius?: number;
 }

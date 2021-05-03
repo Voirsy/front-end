@@ -13,13 +13,13 @@ const Button = styled.button.attrs<StyledIconButtonProps>(({ type }) => ({
   display: grid;
   place-items: center;
 
-  ${({ theme, $size, color, variant, iconWidth = 2, isAvatar, avatarUrl, borderRadius }) => css`
+  ${({ theme, $size, $color, variant, iconWidth = 2, isAvatar, avatarUrl, $borderRadius }) => css`
     background-color: ${
-      variant === 'contained' ? theme.colors[Colors[color]].normal : 'transparent'
+      variant === 'contained' ? theme.colors[Colors[$color]].normal : 'transparent'
     };
-    border-radius: ${borderRadius ? `${borderRadius}rem` : '50%'};
+    border-radius: ${$borderRadius ? `${$borderRadius}rem` : '50%'};
     border-width: ${variant === 'default' ? 0 : 2}px;
-    border-color: ${theme.colors[Colors[color]].normal};
+    border-color: ${theme.colors[Colors[$color]].normal};
     width: ${$size ? `${$size}rem` : '100%'};
     height: ${$size ? `${$size}rem` : '100%'};
 
@@ -27,8 +27,8 @@ const Button = styled.button.attrs<StyledIconButtonProps>(({ type }) => ({
     :focus:not(:disabled) {
       background-color: ${
         variant === 'contained'
-          ? hexToRgba(theme.colors[Colors[color]].normal, 90)
-          : hexToRgba(theme.colors[Colors[color]].normal, 20)
+          ? hexToRgba(theme.colors[Colors[$color]].normal, 90)
+          : hexToRgba(theme.colors[Colors[$color]].normal, 20)
       };
     }
 

@@ -1,51 +1,55 @@
 import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import Styled from './styles';
-import { ModalTemplateProps, ModalToggle } from './types';
+import { ModalTemplateProps } from './types';
+import { handleEscape, outsideClick } from './util';
 
 const modalContainer = document.getElementById('modal-container') as HTMLDivElement;
 const wrapper = document.createElement('div');
 
-const outsideClick = (
-  ref: React.RefObject<HTMLDivElement>,
-  modalToggle: ModalToggle,
-  e: MouseEvent | TouchEvent
-) => {
-  if (!ref.current || ref.current.contains(e.target as Node)) return;
-  modalToggle(false);
-};
-
-const handleEscape = (modalToggle: ModalToggle, e: KeyboardEvent): void => {
-  if (e.key === 'Escape') modalToggle(false);
-};
-
 const ModalTemplate = ({
   children,
-  isAdjustedToParent = false,
   modalToggle,
+  type = 'mixed',
+  isBackground = true,
+  position = {},
+  borderRadius = 0.5,
+  ariaIdentifier = '',
   ...props
 }: ModalTemplateProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     modalContainer.appendChild(wrapper);
-    document.addEventListener('keydown', (e) => handleEscape(modalToggle, e));
-    document.addEventListener('mousedown', (e) => outsideClick(modalRef, modalToggle, e));
-    document.addEventListener('touchstart', (e) => outsideClick(modalRef, modalToggle, e));
+    const keydown = (e: KeyboardEvent) => handleEscape(modalToggle, e);
+    const mousedown = (e: MouseEvent) => outsideClick(modalRef, modalToggle, e, ariaIdentifier);
+    const touchstart = (e: TouchEvent) => outsideClick(modalRef, modalToggle, e, ariaIdentifier);
+
+    document.addEventListener('keydown', keydown);
+    document.addEventListener('mousedown', mousedown);
+    document.addEventListener('touchstart', touchstart);
     return () => {
       modalContainer.removeChild(wrapper);
-      document.removeEventListener('keydown', (e) => handleEscape(modalToggle, e));
-      document.removeEventListener('mousedown', (e) => outsideClick(modalRef, modalToggle, e));
-      document.addEventListener('touchstart', (e) => outsideClick(modalRef, modalToggle, e));
+      document.removeEventListener('keydown', keydown);
+      document.removeEventListener('mousedown', mousedown);
+      document.removeEventListener('touchstart', touchstart);
     };
   }, []);
 
   return createPortal(
-    <Styled.ModalBackground role="dialog" aria-modal {...props}>
-      <Styled.ModalContent ref={modalRef} isAdjustedToParent={isAdjustedToParent}>
+    <Styled.ModalContainer
+      role="dialog"
+      aria-modal
+      isBackground={isBackground}
+      $type={type}
+      position={position}
+      borderRadius={borderRadius}
+      {...props.backgroundAnimation}
+    >
+      <Styled.ModalContent ref={modalRef} $type={type} {...props.contentAnimation}>
         {children}
       </Styled.ModalContent>
-    </Styled.ModalBackground>,
+    </Styled.ModalContainer>,
     wrapper
   );
 };

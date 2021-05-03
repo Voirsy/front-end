@@ -14,14 +14,16 @@ const IconButton = ({
   color = 'primary',
   variant = 'default',
   size,
+  borderRadius,
   ...rest
 }: IconButtonProps) => (
   <Styled.Button
     isAvatar={isAvatar}
     avatarUrl={avatarUrl}
-    color={color}
+    $color={color}
     variant={variant}
     $size={size}
+    $borderRadius={borderRadius}
     {...rest}
   >
     {((isAvatar && !avatarUrl) || !isAvatar) &&

@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   // in the future name, type and other insensitive data will be store in LocalStorage
   // token will be store in httpOnly Cookies and will be set using special method
   const [authState, setAuthState] = useState<UserData>({
-    token: 'sdfas2832f34fbv3gfu68gj9pqios8jasdas',
+    token: 'oisbh982hbjiopsjko0-v3v',
     name: 'Alex Srula',
     type: 'normal',
     avatarUrl:
@@ -59,7 +59,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const isAuthenticated = () => {
     if (!authState.token || !authState.name || !authState.type || !authState.avatarUrl) {
-      logout();
+      // logout();
+      Object.keys(authState).forEach((el) => removeLocalStorageItem(el[0]));
       return false;
     }
     return true;
