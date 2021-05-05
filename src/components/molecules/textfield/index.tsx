@@ -20,7 +20,6 @@ const TextField = ({
   handleKeyDown = () => {},
 }: TextFieldProps) => {
   const [field, meta] = useField(name);
-
   return (
     <Styled.Wrapper variant={variant}>
       <Label
@@ -53,9 +52,7 @@ const TextField = ({
       ) : (
         <Textarea inputHeight={inputHeight} inputWidth={inputWidth} {...field} />
       )}
-      {meta.touched && meta.error && (
-        <Styled.ErrorMessage role="alert">{meta.error}</Styled.ErrorMessage>
-      )}
+      <Styled.ErrorMessage role="alert">{meta.touched && meta.error}</Styled.ErrorMessage>
     </Styled.Wrapper>
   );
 };
