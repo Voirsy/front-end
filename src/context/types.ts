@@ -1,8 +1,11 @@
 export type UserData = {
-  name: string | null;
-  avatarUrl: string | null;
-  token: string | null;
-  type: string | null;
+  name: string;
+  avatarUrl: string;
+  token: string;
+  type: string;
+  birthdate: string;
+  phoneNumber: string;
+  email: string;
 };
 
 export type AuthContextState = {

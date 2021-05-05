@@ -7,6 +7,9 @@ const initialUserData: UserData = {
   avatarUrl: '',
   token: '',
   type: '',
+  birthdate: '',
+  phoneNumber: '',
+  email: '',
 };
 
 const initialState: AuthContextState = {
@@ -41,6 +44,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     type: 'normal',
     avatarUrl:
       'https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2018-09/shutterstock_648907024.jpg?itok=0hb44OrI',
+    birthdate: '10-12-1994',
+    phoneNumber: '354-464-185',
+    email: 'marta@gmail.com',
   });
 
   // this method will be executing after log in
@@ -58,8 +64,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const isAuthenticated = () => {
-    if (!authState.token || !authState.name || !authState.type || !authState.avatarUrl) {
-      logout();
+    if (!authState.token || !authState.name || !authState.type || !authState.email) {
+      Object.keys(authState).forEach((el) => removeLocalStorageItem(el[0]));
       return false;
     }
     return true;
