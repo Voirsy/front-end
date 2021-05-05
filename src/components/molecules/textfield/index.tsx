@@ -16,9 +16,10 @@ const TextField = ({
   disabled = false,
   isEmail = false,
   isPassword = false,
+  handleChange = () => {},
+  handleKeyDown = () => {},
 }: TextFieldProps) => {
   const [field, meta] = useField(name);
-
   return (
     <Styled.Wrapper variant={variant}>
       <Label
@@ -41,12 +42,17 @@ const TextField = ({
           type={type}
           isEmail={isEmail}
           isPassword={isPassword}
+          onKeyDown={handleKeyDown}
           {...field}
+          onChange={(e) => {
+            field.onChange(e);
+            handleChange(e);
+          }}
         />
       ) : (
         <Textarea inputHeight={inputHeight} inputWidth={inputWidth} {...field} />
       )}
-      {meta.touched && <Styled.ErrorMessage role="alert">{meta.error}</Styled.ErrorMessage>}
+      <Styled.ErrorMessage role="alert">{meta.touched && meta.error}</Styled.ErrorMessage>
     </Styled.Wrapper>
   );
 };

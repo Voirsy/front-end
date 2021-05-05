@@ -20,6 +20,7 @@ const ErrorMessage = styled.p`
   margin-top: 0.5rem;
   color: ${({ theme }) => theme.colors.red.normal};
   font-size: 1.2rem;
+  height: 1.5rem;
 `;
 
 const Styled = { Wrapper, ErrorMessage };

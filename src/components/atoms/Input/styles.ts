@@ -14,6 +14,11 @@ const Input = styled.input.attrs<StyledInputProps>(({ variant }) => ({
       ${variant === 'login' ? theme.colors.grayColors.light : theme.colors.blueOutline.normal};
     padding-left: ${variant === 'login' ? '1.2rem' : '0.7rem'};
 
+    ${(variant === 'animate' || variant === 'placeholder') &&
+    css`
+      font-family: ${theme.fonts.montserrat};
+    `}
+
     ${variant === 'search' &&
     css`
       padding-left: ${inputHeight}rem;

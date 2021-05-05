@@ -17,4 +17,6 @@ export interface InputProps extends StyledInputProps {
   placeholder?: string;
   isPassword?: boolean;
   isEmail?: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
