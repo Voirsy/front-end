@@ -14,4 +14,6 @@ export interface TextFieldProps extends StyledTextFieldProps {
   placeholder?: string;
   isPassword?: boolean;
   isEmail?: boolean;
+  handleChange?: (...args: any[]) => void;
+  handleKeyDown?: (...args: any[]) => void;
 }
