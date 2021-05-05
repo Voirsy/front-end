@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import Button from '../../components/atoms/Button';
 import TextField from '../../components/molecules/textfield';
+import { ChangePasswordSchema } from '../../validation/ProfileSchema';
 import Styled from './styles';
 
 const ChangePassword = () => (
@@ -8,6 +9,7 @@ const ChangePassword = () => (
     <Formik
       initialValues={{ currentPassword: '', newPassword: '' }}
       onSubmit={(values) => console.log(values)}
+      validationSchema={ChangePasswordSchema}
     >
       {() => (
         <Styled.Form>

@@ -1,4 +1,4 @@
-import { Formik } from 'formik';
+import { Formik, FormikErrors } from 'formik';
 import { useState } from 'react';
 import { FiCamera, FiUser } from 'react-icons/fi';
 import Button from '../../components/atoms/Button';
@@ -7,6 +7,8 @@ import useInputFormatter from '../../hooks/useInputFormatter';
 import Styled from './styles';
 import IconButton from '../../components/atoms/IconButton';
 import { useAuthContextState } from '../../context/authContext';
+import { EditAccountForm } from './types';
+import { EditProfileSchema } from '../../validation/ProfileSchema';
 
 const EditAccount = () => {
   const birthdateFormat = useInputFormatter([2, 2, 4], 'birthdate');
@@ -16,16 +18,25 @@ const EditAccount = () => {
 
   const handleFileUpload = (
     e: React.ChangeEvent<HTMLInputElement>,
-    setFieldValue: (field: string, value: unknown) => void
+    setFieldValue: (field: string, value: unknown) => void,
+    setErrors: (errors: FormikErrors<EditAccountForm>) => void
   ) => {
     const reader = new FileReader();
     if (e?.target?.files) {
-      const currentFile = e.target.files[0];
+      const file = e.target.files[0];
+      if (file.size > 2097152) {
+        setErrors({ avatar: 'Max size of image is 2MB!' });
+        return;
+      }
+      const currentFile = file;
       reader.onloadend = () => {
         setFieldValue('avatar', reader.result);
         setFile({
           file: reader.result as string,
         });
+      };
+      reader.onerror = () => {
+        setErrors({ avatar: 'Unknown error occured!' });
       };
       if (currentFile instanceof Blob) reader.readAsDataURL(currentFile);
     }
@@ -42,8 +53,9 @@ const EditAccount = () => {
           phonenumber: userInfo.phoneNumber,
         }}
         onSubmit={(values) => console.log(values)}
+        validationSchema={EditProfileSchema}
       >
-        {({ setFieldValue, values }) => (
+        {({ setFieldValue, values, setErrors, errors }) => (
           <Styled.Form>
             <Styled.AvatarWrapper hasBorder={!(fileObject?.file || userInfo.avatarUrl)}>
               {fileObject?.file || userInfo.avatarUrl !== '' ? (
@@ -61,11 +73,12 @@ const EditAccount = () => {
                   type="file"
                   accept="image/x-png,image/jpeg"
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    handleFileUpload(e, setFieldValue)
+                    handleFileUpload(e, setFieldValue, setErrors)
                   }
                 />
               </Styled.UploadIcon>
             </Styled.AvatarWrapper>
+            <Styled.FileError>{errors.avatar}</Styled.FileError>
             <Styled.FormWrapper>
               <TextField
                 name="fullname"

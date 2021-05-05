@@ -21,7 +21,7 @@ const AvatarWrapper = styled.div<{ hasBorder: boolean }>`
   place-items: center;
   position: relative;
   border-radius: 50%;
-  margin-bottom: 5rem;
+  margin-bottom: 1rem;
   ${({ hasBorder }) =>
     hasBorder &&
     css`
@@ -56,6 +56,12 @@ const FileInput = styled.input`
   opacity: 0;
 `;
 
-const Styled = { FormWrapper, Form, AvatarWrapper, Avatar, UploadIcon, FileInput };
+const FileError = styled.p`
+  color: ${({ theme }) => theme.colors.red.normal};
+  font-size: 1.3rem;
+  margin-bottom: 5rem;
+`;
+
+const Styled = { FormWrapper, Form, AvatarWrapper, Avatar, UploadIcon, FileInput, FileError };
 
 export default Styled;
